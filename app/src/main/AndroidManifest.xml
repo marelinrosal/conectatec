@@ -12,15 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Conectatec"
         tools:targetApi="31">
+
+        <!-- Actividad principal (login) -->
         <activity
             android:name=".Login_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Nueva Activity de registro -->
+        <activity
+            android:name=".Registro_activity"
+            android:exported="false" /> <!-- Si no va a ser accedida desde otras apps -->
+
+        <activity
+            android:name=".InicioActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

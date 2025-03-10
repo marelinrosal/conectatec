@@ -149,7 +149,7 @@
         android:layout_marginTop="-20dp"
         android:background="@drawable/custom_edit_text"
         android:backgroundTint="@color/white"
-        android:text="Iniciar Ahora"
+        android:text="Iniciar sesion"
         android:textColor="@color/orange"
         android:textSize="19sp"
         android:textStyle="bold" />

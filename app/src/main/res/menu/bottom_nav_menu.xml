@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_schedules"
+        android:title="Horarios" />
+
+    <item
+        android:id="@+id/nav_routes"
+        android:title="Rutas" />
+
+    <item
+        android:id="@+id/nav_history"
+        android:title="Historial" />
+
+    <item
+        android:id="@+id/nav_qr"
+        android:title="QR" />
+</menu>
