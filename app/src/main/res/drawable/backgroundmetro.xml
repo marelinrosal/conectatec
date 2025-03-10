@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- Fondo principal (puede ser un color o transparente) -->
+        <item>
+            <color android:color="@android:color/transparent" /> <!-- O cualquier otro color -->
+        </item>
+
+        <!-- Imagen posicionada en la parte superior con altura reducida -->
+        <item android:gravity="top">
+            <bitmap
+                android:src="@drawable/metro"
+                android:gravity="top"
+                android:height="100dp" /> <!-- Ajusta este valor según tus necesidades -->
+        </item>
+    </layer-list>
