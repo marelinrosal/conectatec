@@ -27,4 +27,9 @@
         android:name="com.example.conectatec.QrFragment"
         android:label="QR" />
 
+    <fragment
+        android:id="@+id/nav_notifications"
+        android:name="com.example.conectatec.NotificacionesFragment"
+        android:label="QR" />
+
 </navigation>
