@@ -3,27 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_schedules"> <!-- Destino inicial: "Horarios" -->
+    app:startDestination="@id/nav_routes"> <!-- Destino inicial: "Rutas" -->
 
     <!-- Define los fragments correspondientes a cada opción del menú -->
     <fragment
         android:id="@+id/nav_schedules"
-        android:name="com.example.conectatec.EmptyFragment"
+        android:name="com.example.conectatec.HorariosFragment"
         android:label="Horarios" />
 
     <fragment
         android:id="@+id/nav_routes"
-        android:name="com.example.conectatec.EmptyFragment"
+        android:name="com.example.conectatec.RutasFragment"
         android:label="Rutas" />
 
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.example.conectatec.EmptyFragment"
+        android:name="com.example.conectatec.HistorialFragment"
         android:label="Historial" />
 
     <fragment
         android:id="@+id/nav_qr"
-        android:name="com.example.conectatec.EmptyFragment"
+        android:name="com.example.conectatec.QrFragment"
         android:label="QR" />
 
 </navigation>
