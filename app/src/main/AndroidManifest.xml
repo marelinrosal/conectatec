@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Conectatec"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        >
 
         <!-- Actividad principal (login) -->
         <activity
@@ -19,19 +20,25 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Nueva Activity de registro -->
+        </activity> <!-- Nueva Activity de registro -->
         <activity
             android:name=".Registro_activity"
             android:exported="false" /> <!-- Si no va a ser accedida desde otras apps -->
-
         <activity
             android:name=".InicioActivity"
             android:exported="false" />
 
+        <!-- Google Maps -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA8TLxJLbbzt6h8zZnhUkF0Gp8TVwA6WYM"/>
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 </manifest>
