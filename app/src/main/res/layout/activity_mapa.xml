@@ -23,7 +23,7 @@
         android:layout_width="370dp"
         android:layout_height="376dp"
         android:background="@drawable/custom_edit_text"
-        android:backgroundTint="#E7E3E3"
+        android:backgroundTint="#FFFFFF"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
