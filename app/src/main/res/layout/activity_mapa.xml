@@ -11,9 +11,10 @@
         android:id="@+id/mapa"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="412dp"
-        android:layout_height="893dp"
+        android:layout_height="1000dp"
         android:background="#CED7C4"
         app:layout_constrainedHeight="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +49,7 @@
             android:orientation="vertical"></LinearLayout>
 
         <RadioGroup
+            android:id="@+id/Grupo"
             android:layout_width="206dp"
             android:layout_height="252dp"
             android:layout_gravity="center"
