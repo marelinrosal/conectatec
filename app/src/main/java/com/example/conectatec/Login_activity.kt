@@ -31,7 +31,10 @@ class Login_activity : AppCompatActivity() {
 
             // Redirigir a la pantalla principal
             val intent = Intent(this, InicioActivity::class.java)
+            // Limpia la pila de actividades y crea una nueva tarea
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            finish() // Opcional, pero ayuda a asegurar el cierre
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
