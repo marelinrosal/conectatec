@@ -2,21 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_history"
-        android:title="Historial" />
+        android:icon="@mipmap/historial"
+        android:title="Historial"
+        android:visible="true" />
 
     <item
         android:id="@+id/nav_schedules"
+        android:icon="@mipmap/reloj"
         android:title="Horarios" />
 
     <item
         android:id="@+id/nav_routes"
+        android:icon="@mipmap/ruta"
         android:title="Rutas" />
 
     <item
         android:id="@+id/nav_qr"
+        android:icon="@mipmap/codigo"
         android:title="QR" />
 
     <item
         android:id="@+id/nav_notifications"
+        android:icon="@mipmap/notificacion"
         android:title="Notificaciones" />
 </menu>
