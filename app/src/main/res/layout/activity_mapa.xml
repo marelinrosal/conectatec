@@ -10,7 +10,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapa"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="412dp"
+        android:layout_width="520dp"
         android:layout_height="1000dp"
         android:background="#CED7C4"
         app:layout_constrainedHeight="false"
@@ -21,7 +21,7 @@
     <LinearLayout
         android:id="@+id/panelEstacion"
         android:layout_width="370dp"
-        android:layout_height="376dp"
+        android:layout_height="390dp"
         android:background="@drawable/custom_edit_text"
         android:backgroundTint="#FFFFFF"
         android:orientation="vertical"
@@ -34,7 +34,7 @@
         <TextView
             android:id="@+id/Titulo"
             android:layout_width="match_parent"
-            android:layout_height="81dp"
+            android:layout_height="55dp"
             android:gravity="center"
             android:text="¡Elige una estación!"
             android:textColor="@color/orange"
@@ -44,14 +44,14 @@
         <LinearLayout
             android:id="@+id/rayita"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="#FF6B00"
+            android:layout_height="15dp"
+            android:background="@color/orange"
             android:orientation="vertical"></LinearLayout>
 
         <RadioGroup
             android:id="@+id/Grupo"
             android:layout_width="206dp"
-            android:layout_height="252dp"
+            android:layout_height="280dp"
             android:layout_gravity="center"
             android:gravity="bottom"
             android:orientation="vertical">
@@ -61,14 +61,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+                android:button="@mipmap/zina"
                 android:buttonTint="#FF5722"
-                android:text="Zinancantepec"
+                android:text="Zinacantepec"
                 android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/toluca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:button="@mipmap/toluca"
                 android:buttonTint="#FF5722"
                 android:text="Toluca Centro"
                 android:textSize="18sp" />
@@ -77,6 +79,7 @@
                 android:id="@+id/metepec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:button="@mipmap/metepec"
                 android:buttonTint="#FF5722"
                 android:text="Metepec"
                 android:textSize="18sp" />
@@ -85,15 +88,17 @@
                 android:id="@+id/lerma"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:button="@mipmap/lerma"
                 android:buttonTint="#FF5722"
                 android:text="Lerma"
                 android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/santaFe"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#FF5722"
+                android:button="@mipmap/zina"
+                android:buttonTint="@color/orange"
                 android:text="Santa Fe"
                 android:textSize="18sp" />
 

@@ -6,7 +6,7 @@
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/metro"
+    android:background="@mipmap/textura"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Login_activity">
@@ -65,7 +65,6 @@
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
-
 
 
             <EditText
