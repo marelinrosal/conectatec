@@ -48,4 +48,6 @@ dependencies {
     implementation(libs.material.v190)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.zxing)
+
 }

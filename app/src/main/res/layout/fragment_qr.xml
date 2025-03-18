@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:background="@drawable/alas"
-    android:orientation="vertical">
+    android:padding="16dp">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="73dp"
-        app:srcCompat="@mipmap/pago" />
+        android:id="@+id/imagenQR"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="Código QR generado" />
+
+    <Button
+        android:id="@+id/generadorQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/orange"
+        android:text="Generar QR" />
+
+
 
 </LinearLayout>
+

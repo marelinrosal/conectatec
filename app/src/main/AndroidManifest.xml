@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,8 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_tren_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Conectatec"
-        tools:targetApi="31"
-        >
+        tools:targetApi="31">
 
         <!-- Actividad principal (login) -->
         <activity
@@ -29,16 +32,10 @@
             android:exported="false" /> <!-- Si no va a ser accedida desde otras apps -->
         <activity
             android:name=".InicioActivity"
-            android:exported="false" />
-
-        <!-- Google Maps -->
+            android:exported="false" /> <!-- Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA8TLxJLbbzt6h8zZnhUkF0Gp8TVwA6WYM"/>
-
+            android:value="AIzaSyA8TLxJLbbzt6h8zZnhUkF0Gp8TVwA6WYM" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 </manifest>
