@@ -66,8 +66,13 @@ class RutasFragment : Fragment(), OnMapReadyCallback {
 
     private fun cambiarUbicacion(ubicacion: LatLng, titulo: String) {
         mMap.clear() // Limpia marcadores anteriores
+
+        // Ajustar la latitud para mover el mapa hacia arriba
+        val desplazamiento = 0.005  // Ajusta este valor según sea necesario
+        val nuevaUbicacion = LatLng(ubicacion.latitude - desplazamiento, ubicacion.longitude)
+
         mMap.addMarker(MarkerOptions().position(ubicacion).title(titulo))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(nuevaUbicacion, 15f))
     }
 }
 
