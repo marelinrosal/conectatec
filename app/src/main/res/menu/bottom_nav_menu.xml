@@ -20,7 +20,7 @@
 
     <item
         android:id="@+id/nav_wallet"
-        android:icon="@mipmap/codigo"
+        android:icon="@mipmap/ticket"
         android:title="Wallet" />
 
     <item

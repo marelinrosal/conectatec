@@ -30,26 +30,30 @@
         <!-- Contenedor horizontal para los botones -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/lunes_viernes"
-                android:layout_width="151dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lunes a viernes" />
+                android:text="Lunes a viernes"
+                android:backgroundTint="@color/verde"/>
 
             <Button
                 android:id="@+id/btn_sabado"
-                android:layout_width="100dp"
-                android:layout_height="48dp"
-                android:text="Sábado" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sábado"
+                android:backgroundTint="@color/verde"/>
 
             <Button
                 android:id="@+id/btn_domingo"
-                android:layout_width="115dp"
-                android:layout_height="48dp"
-                android:text="Domingo" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Domingo"
+                android:backgroundTint="@color/verde"/>
         </LinearLayout>
 
         <!-- GRUPO LUNES A VIERNES -->
