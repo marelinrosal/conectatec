@@ -58,7 +58,7 @@ class walletFragment : Fragment() {
     }
 
     private fun mostrarDialogoEscaneado() {
-        requireActivity().runOnUiThread {
+        if (isAdded && context != null) {
             AlertDialog.Builder(requireContext())
                 .setTitle("Código Escaneado")
                 .setMessage("Has escaneado el QR con tu celular.")
@@ -70,18 +70,18 @@ class walletFragment : Fragment() {
         }
     }
 
+
     private fun ocultarQR() {
-        requireActivity().runOnUiThread {
-            imagenQR.setImageDrawable(null) // Borra el QR
-            qrGenerado = false // Se marca como no generado
-
-
+        if (isAdded) {
+            imagenQR.setImageDrawable(null)
+            qrGenerado = false
         }
     }
 
 
+
     private fun mostrarNotificacion(mensaje: String) {
-        requireActivity().runOnUiThread {
+        if (isAdded && context != null) {
             AlertDialog.Builder(requireContext())
                 .setTitle("Información")
                 .setMessage(mensaje)
@@ -89,4 +89,5 @@ class walletFragment : Fragment() {
                 .show()
         }
     }
+
 }
