@@ -21,6 +21,7 @@ class ViewPagerAdapter(private val imagenes: List<Int>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageView.setImageResource(imagenes[position])
+        holder.imageView.scaleType = ImageView.ScaleType.FIT_XY
     }
 
     override fun getItemCount() = imagenes.size

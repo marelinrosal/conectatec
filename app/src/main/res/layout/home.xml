@@ -19,19 +19,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:alpha="0.8"
+
             android:elevation="5dp"
             android:padding="30dp"
             android:paddingTop="200dp"
             app:srcCompat="@mipmap/logotrenhome" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/imagenesSlide"
             android:layout_width="380dp"
-            android:layout_height="200dp"
+            android:layout_height="325dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp" />
+            android:layout_marginEnd="1dp" >
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp" />
+
+        <Button
+            android:id="@+id/BotonCompra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:paddingBottom="6dp"
+            android:text="¡Compra ya tu boleto!"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
