@@ -26,7 +26,7 @@
             app:srcCompat="@mipmap/logotrenhome" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/imagenes"
+            android:id="@+id/imagenesSlide"
             android:layout_width="380dp"
             android:layout_height="200dp"
             android:layout_marginStart="1dp"

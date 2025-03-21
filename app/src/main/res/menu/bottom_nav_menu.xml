@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/nav_history"
-        android:icon="@mipmap/historial"
-        android:title="Historial"
+        android:id="@+id/nav_home"
+        android:icon="@mipmap/home"
+        android:title="Home"
         android:visible="true" />
+
 
     <item
         android:id="@+id/nav_schedules"
@@ -17,9 +19,9 @@
         android:title="Rutas" />
 
     <item
-        android:id="@+id/nav_qr"
+        android:id="@+id/nav_wallet"
         android:icon="@mipmap/codigo"
-        android:title="QR" />
+        android:title="Wallet" />
 
     <item
         android:id="@+id/nav_notifications"

@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
-class QrFragment : Fragment() {
+class walletFragment : Fragment() {
 
     private lateinit var imagenQR: ImageView
     private lateinit var botonGeneradorQR: Button
@@ -25,7 +25,7 @@ class QrFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_qr, container, false)
+        return inflater.inflate(R.layout.fragment_wallet, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -6,6 +6,12 @@
     app:startDestination="@id/nav_routes"> <!-- Destino inicial: "Rutas" -->
 
     <!-- Define los fragments correspondientes a cada opción del menú -->
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.conectatec.homeFragment"
+        android:label="Home" />
+
     <fragment
         android:id="@+id/nav_schedules"
         android:name="com.example.conectatec.HorariosFragment"
@@ -23,9 +29,9 @@
         android:label="Historial" />
 
     <fragment
-        android:id="@+id/nav_qr"
-        android:name="com.example.conectatec.QrFragment"
-        android:label="QR" />
+        android:id="@+id/nav_wallet"
+        android:name="com.example.conectatec.walletFragment"
+        android:label="Wallet" />
 
     <fragment
         android:id="@+id/nav_notifications"
