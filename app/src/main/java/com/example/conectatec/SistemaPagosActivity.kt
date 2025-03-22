@@ -82,14 +82,14 @@ class SistemaPagosActivity : AppCompatActivity() {
         val bottomSheetDialog = BottomSheetDialog(this)
         webView = WebView(this)
 
-        // 📌 Limpiar caché para evitar errores
+        //  Limpiar caché para evitar errores
         webView.clearCache(true)
         webView.clearHistory()
 
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
 
-        var pagoExitoso = false // 📌 Para rastrear si se completó el pago
+        var pagoExitoso = false //  Para rastrear si se completó el pago
 
         webView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN || event.action == MotionEvent.ACTION_MOVE) {
@@ -103,9 +103,8 @@ class SistemaPagosActivity : AppCompatActivity() {
                 super.onPageFinished(view, url)
 
                 if (url != null) {
-                    println("WebView cargó: $url") // 📌 Imprime la URL en Logcat
 
-                    // 📌 Si la URL contiene "pay", significa que el pago ha finalizado
+
                     if (url.contains("pay", ignoreCase = true)) {
                         pagoExitoso = true
                         mostrarNotificacion("Pago exitoso", "Tu pago se ha completado correctamente.")
@@ -119,7 +118,7 @@ class SistemaPagosActivity : AppCompatActivity() {
         }
 
         bottomSheetDialog.setOnDismissListener {
-            if (!pagoExitoso) { // 📌 Si se cerró sin pago exitoso, mostrar error
+            if (!pagoExitoso) { // Si se cerró sin pago exitoso, mostrar error
                 mostrarNotificacion("Transacción fallida", "No se completó el pago.")
                 Toast.makeText(this@SistemaPagosActivity, "Transacción fallida. Intenta de nuevo.", Toast.LENGTH_LONG).show()
             }
@@ -137,11 +136,11 @@ class SistemaPagosActivity : AppCompatActivity() {
         handler.postDelayed(object : Runnable {
             override fun run() {
                 if (bottomSheetDialog.isShowing) {
-                    if (!usuarioInteractuando) { // 📌 Solo recargar si el usuario NO está interactuando
+                    if (!usuarioInteractuando) { //  Solo recargar si el usuario NO está interactuando
                         println("Recargando WebView...")
                         webView.reload()
                     }
-                    usuarioInteractuando = false // 📌 Restablecer la interacción
+                    usuarioInteractuando = false //  Restablecer la interacción
                     handler.postDelayed(this, 7000)
                 }
             }
