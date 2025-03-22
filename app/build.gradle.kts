@@ -65,7 +65,7 @@ dependencies {
     implementation("io.ktor:ktor-client-android:3.1.1")
 
     //Se agrega el Kotlin Multiplatform Client para Supabase
-    implementation("io.github.jan-tennert.supabase:postgrest-kt:0.7.6")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:3.1.3")
 
     //se agrega kotlinx serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
