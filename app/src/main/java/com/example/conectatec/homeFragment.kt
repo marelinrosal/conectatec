@@ -9,11 +9,12 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.gms.maps.model.LatLng
 
 
 class homeFragment : Fragment() {
@@ -39,7 +40,12 @@ class homeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val lblCerrar = view.findViewById<TextView>(R.id.lblcerrar)
 
+        lblCerrar.setOnClickListener {
+            val intent = Intent(requireContext(), Login_activity::class.java) // 🔹 Cambia "NuevaActivity" por tu Activity destino
+            startActivity(intent)
+        }
         viewPager = view.findViewById(R.id.imagenesSlide)
         viewPager.adapter = ViewPagerAdapter(imagenesCarrusel)
         viewPager.setCurrentItem(currentPage, false)
@@ -66,6 +72,17 @@ class homeFragment : Fragment() {
                 }
             }
         })
+        val btnPagos: Button =view.findViewById(R.id.BotonCompra)
+        btnPagos.setOnClickListener {
+            // Validar credenciales aquí (si es necesario)
+
+            // Redirigir a la pantalla principal
+            val intent = Intent(requireContext(), SistemaPagosActivity::class.java)
+            // Limpia la pila de actividades y crea una nueva tarea
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            requireActivity().finish() // Opcional, pero ayuda a asegurar el cierre
+        }
         val grupo: RadioGroup = view.findViewById(R.id.grupoBotones)
 
 

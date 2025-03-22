@@ -70,4 +70,11 @@ dependencies {
     //se agrega kotlinx serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
+
+    //Stripe para pagos.
+
+    implementation(libs.stripe.android)
+    implementation(libs.okhttp)
+
+
 }
