@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    // se agrega el plugin de serialization
+    kotlin("plugin.serialization") version "2.1.0"
+
+
 }
 
 android {
@@ -49,5 +54,20 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.zxing)
+
+    // se agrega la dependencia de instalación de la libreria cliente kotlin para supabase
+    implementation(platform("io.github.jan-tennert.supabase:bom:3.1.3"))
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.github.jan-tennert.supabase:auth-kt")
+    implementation("io.github.jan-tennert.supabase:realtime-kt")
+
+    // se agrega el Ktor Client Engine para cada Kotlin targets
+    implementation("io.ktor:ktor-client-android:3.1.1")
+
+    //Se agrega el Kotlin Multiplatform Client para Supabase
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:0.7.6")
+
+    //se agrega kotlinx serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
 }
