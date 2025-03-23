@@ -39,7 +39,7 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="#FFE0E0">
+                app:cardBackgroundColor="#90FFE0E0">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="#FFF9C4">
+                app:cardBackgroundColor="#90FFF9C4">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                         android:layout_height="36dp"
                         android:src="@drawable/ic_clock"
                         android:layout_gravity="center_vertical"
-                        app:tint="#FFA000" />
+                        app:tint="#ff7c00" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -120,7 +120,7 @@
                             android:text="⏱️ RETRASO: 15 minutos"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="#FFA000"/>
+                            android:textColor="#ff7c00"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -147,7 +147,7 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="#E1F5FE">
+                app:cardBackgroundColor="#90E1F5FE">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -201,7 +201,7 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="#E8F5E9">
+                app:cardBackgroundColor="#90E8F5E9">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -255,7 +255,7 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="#90FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
