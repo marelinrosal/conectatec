@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="INICIO DE SESION"
                 android:textAlignment="center"
-                android:textColor="#FF6B00"
+                android:textColor="@color/orange"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#FF6B00"
+                android:backgroundTint="@color/orange"
                 android:text="Iniciar sesion"
                 android:textSize="20sp"
                 app:cornerRadius="20dp" />
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:text="REGISTRARSE AHORA"
         android:textAlignment="center"
-        android:textColor="#FF6B00"
+        android:textColor="@color/orange"
         android:textSize="20sp"
         android:textStyle="bold" />
 
