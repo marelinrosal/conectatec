@@ -70,10 +70,12 @@ class Login_activity : AppCompatActivity() {
 
     // ✅ Función para obtener datos de Supabase con manejo de errores
     private fun getData() {
+        // ✅ Utilizar lifecycleScope para manejar las corrutinas
         lifecycleScope.launch {
             try {
                 val client = getClient()
                 val supabaseResponse = client.postgrest["users"].select()
+                // ✅ Decodificar la respuesta a una lista de objetos User
                 val data = supabaseResponse.decodeList<User>()
 
                 Log.e("supabase", data.toString()) // ✅ Corregido
