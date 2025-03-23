@@ -141,6 +141,17 @@
                         android:textStyle="bold" />
                 </RadioGroup>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblcerrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="CERRAR SESIÓN"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 

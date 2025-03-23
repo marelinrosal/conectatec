@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Conectatec"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SistemaPagosActivity"
+            android:exported="false" />
         <!-- Actividad principal (login) -->
         <activity
             android:name=".Login_activity"
