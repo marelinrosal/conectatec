@@ -10,8 +10,28 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.SupabaseClient
+import io.github.jan.supabase.postgrest.Postgrest
+import androidx.lifecycle.lifecycleScope
+import io.github.jan.supabase.createSupabaseClient
+import kotlinx.coroutines.launch
+import io.github.jan.supabase.postgrest.postgrest // ✅ Importación correcta
+import android.util.Log // ✅ Importar esto
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class Registro_activity : AppCompatActivity() {
+
+    data class User(
+        val id: Int = 0,
+        val name: String = "",
+        val email: String = "",
+        val phone: String = "",
+        val username: String = "",
+        var password: String = ""
+    )
 
     // Declare UI elements
     private lateinit var nombreApellidos: EditText
@@ -129,4 +149,18 @@ class Registro_activity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+    // se crea el cliente para conectar con supabse
+    //mala práctica hay que crear variables de entorno
+        private fun getClient(): SupabaseClient {
+        return createSupabaseClient(
+            supabaseUrl = "https://pxtwcujdospzspdcmlzx.supabase.co",
+            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4dHdjdWpkb3NwenNwZGNtbHp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2MTUyMTIsImV4cCI6MjA1ODE5MTIxMn0.ADmBU41kcmoi1JaCettGUGeyUAlK_fvyx9Dj8xF7INc",
+        ) {
+            install(Postgrest)
+        }
+    }
+
+
 }

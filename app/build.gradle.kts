@@ -70,6 +70,9 @@ dependencies {
     //se agrega kotlinx serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
+    //se agrega la dependencia de coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
 
     //Stripe para pagos.
 
