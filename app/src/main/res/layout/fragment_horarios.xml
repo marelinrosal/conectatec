@@ -12,6 +12,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Encabezado -->
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
@@ -27,26 +28,29 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Contenedor horizontal para los botones -->
+        <!-- Botones para seleccionar el día -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
 
             <Button
                 android:id="@+id/lunes_viernes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lunes a viernes"
-                android:backgroundTint="@color/verde"/>
+                android:backgroundTint="@color/verde"
+                android:layout_marginEnd="8dp"/>
 
             <Button
                 android:id="@+id/btn_sabado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sábado"
-                android:backgroundTint="@color/verde"/>
+                android:backgroundTint="@color/verde"
+                android:layout_marginEnd="8dp"/>
 
             <Button
                 android:id="@+id/btn_domingo"
@@ -56,20 +60,20 @@
                 android:backgroundTint="@color/verde"/>
         </LinearLayout>
 
-        <!-- GRUPO LUNES A VIERNES -->
+        <!-- Lunes a Viernes -->
         <LinearLayout
             android:id="@+id/layout_lunes_viernes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ZINACANTEPEC-TOLUCA -->
+            <!-- Ida: Zinacantepec → Santa Fe -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Zinacantepec-Toluca"
+                android:text="Ida: Zinacantepec → Santa Fe"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -110,26 +114,78 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Zina-Toluca" />
+                        android:text="Zinacantepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="05:00hrs" />
+                        android:text="06:00hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23:45hrs" />
+                        android:text="22:00hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Toluca-Metepec" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06:15hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Metepec-Lerma" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06:30hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:30hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lerma-Santa Fe" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06:45hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:45hrs" />
                 </TableRow>
             </TableLayout>
 
-            <!-- TOLUCA-ZINACANTEPEC -->
+            <!-- Regreso: Santa Fe → Zinacantepec -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Toluca-Zinacantepec"
+                android:text="Regreso: Santa Fe → Zinacantepec"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -170,241 +226,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Toluca-Zina" />
+                        android:text="Santa Fe-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="04:30hrs" />
+                        android:text="06:00hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="23:30hrs" />
-                </TableRow>
-            </TableLayout>
-
-            <!-- Continue with other tables for Lunes a Viernes -->
-            <!-- TOLUCA-METEPEC -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Toluca-Metepec"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:id="@+id/table_lv_toluca_metepec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Línea y dirección"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Primera salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Última salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Metepec" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="04:30hrs" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="23:52hrs" />
-                </TableRow>
-            </TableLayout>
-
-            <!-- METEPEC-TOLUCA -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Metepec-Toluca"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:id="@+id/table_lv_metepec_toluca"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Línea y dirección"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Primera salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Última salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Toluca" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="05:00hrs" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="23:30hrs" />
-                </TableRow>
-            </TableLayout>
-
-            <!-- METEPEC-LERMA -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Metepec-Lerma"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:id="@+id/table_lv_metepec_lerma"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Línea y dirección"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Primera salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Última salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Lerma" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="05:15hrs" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="22:45hrs" />
-                </TableRow>
-            </TableLayout>
-
-            <!-- LERMA-METEPEC -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Lerma-Metepec"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:id="@+id/table_lv_lerma_metepec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Línea y dirección"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Primera salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Última salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:text="22:00hrs" />
                 </TableRow>
 
                 <TableRow>
@@ -416,137 +248,51 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="04:45hrs" />
+                        android:text="06:15hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Metepec-Toluca" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06:30hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="22:30hrs" />
                 </TableRow>
-            </TableLayout>
-
-            <!-- LERMA-SANTA FE -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Lerma-Santa Fe"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:id="@+id/table_lv_lerma_santafe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
 
                 <TableRow>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Línea y dirección"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:text="Toluca-Zinacantepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Primera salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:text="06:45hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Última salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Santa Fe" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="05:30hrs" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="22:00hrs" />
-                </TableRow>
-            </TableLayout>
-
-            <!-- SANTA FE-LERMA -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Santa Fe-Lerma"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:id="@+id/table_lv_santafe_lerma"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Línea y dirección"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Primera salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/orange"
-                        android:text="Última salida"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Santa Fe-Lerma" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="05:00hrs" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="21:45hrs" />
+                        android:text="22:45hrs" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
 
-        <!-- GRUPO SÁBADO -->
+        <!-- Sábado -->
         <LinearLayout
             android:id="@+id/layout_sabado"
             android:layout_width="match_parent"
@@ -554,13 +300,13 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <!-- ZINACANTEPEC-TOLUCA SÁBADO -->
+            <!-- Ida: Zinacantepec → Santa Fe -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Zinacantepec-Toluca"
+                android:text="Ida: Zinacantepec → Santa Fe"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -601,43 +347,78 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1" />
+                        android:text="Zinacantepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:00hrs" />
+                        android:text="06:30hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:45hrs" />
+                        android:text="21:30hrs" />
                 </TableRow>
 
                 <TableRow>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2" />
+                        android:text="Toluca-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:40hrs" />
+                        android:text="06:45hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:35hrs" />
+                        android:text="21:45hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Metepec-Lerma" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:00hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:00hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lerma-Santa Fe" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:15hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs" />
                 </TableRow>
             </TableLayout>
 
+            <!-- Regreso: Santa Fe → Zinacantepec -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Toluca-Zinacantepec"
+                android:text="Regreso: Santa Fe → Zinacantepec"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -678,26 +459,73 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Zina-Toluca" />
+                        android:text="Santa Fe-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:15hrs" />
+                        android:text="06:30hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lerma-Metepec" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06:45hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:45hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Metepec-Toluca" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:00hrs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="22:00hrs" />
                 </TableRow>
-            </TableLayout>
 
-            <!-- Continue with the other 9 tables for Sábado, similar to Lunes a Viernes -->
-            <!-- For brevity, I've only shown the first table structure but would include all 10 -->
-            <!-- ... other tables ... -->
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Toluca-Zinacantepec" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:15hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs" />
+                </TableRow>
+            </TableLayout>
         </LinearLayout>
 
-        <!-- GRUPO DOMINGO -->
+        <!-- Domingo -->
         <LinearLayout
             android:id="@+id/layout_domingo"
             android:layout_width="match_parent"
@@ -705,13 +533,13 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <!-- ZINACANTEPEC-TOLUCA DOMINGO -->
+            <!-- Ida: Zinacantepec → Santa Fe -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Zinacantepec-Toluca"
+                android:text="Ida: Zinacantepec → Santa Fe"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -752,7 +580,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Zina-Toluca" />
+                        android:text="Zinacantepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -762,14 +590,172 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="21:00hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Toluca-Metepec" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:15hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:15hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Metepec-Lerma" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:30hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lerma-Santa Fe" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:45hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="21:45hrs" />
                 </TableRow>
             </TableLayout>
 
-            <!-- Continue with the other 9 tables for Domingo, similar to Lunes a Viernes -->
-            <!-- For brevity, I've only shown the first table structure but would include all 10 -->
-            <!-- ... other tables ... -->
-        </LinearLayout>
+            <!-- Regreso: Santa Fe → Zinacantepec -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Regreso: Santa Fe → Zinacantepec"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <TableLayout
+                android:id="@+id/table_dom_toluca_zinacantepec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:stretchColumns="*">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/orange"
+                        android:text="Línea y dirección"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/orange"
+                        android:text="Primera salida"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/orange"
+                        android:text="Última salida"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Santa Fe-Lerma" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:00hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:00hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lerma-Metepec" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:15hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:15hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Metepec-Toluca" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:30hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Toluca-Zinacantepec" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:45hrs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:45hrs" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
