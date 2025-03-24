@@ -25,7 +25,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="Horario de los sistemas de transporte"
-            android:textSize="18sp"
+            android:textSize="22dp"
             android:textStyle="bold" />
 
         <!-- Botones para seleccionar el día -->
@@ -74,7 +74,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="Ida: Zinacantepec → Santa Fe"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TableLayout
@@ -86,6 +86,7 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -94,6 +95,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -102,6 +104,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -112,11 +115,13 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Zinacantepec-Toluca" />
 
                     <TextView
+                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="06:00hrs" />
@@ -198,6 +203,7 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -206,6 +212,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -214,6 +221,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -224,16 +232,19 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Santa Fe-Lerma" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="06:00hrs" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="22:00hrs" />

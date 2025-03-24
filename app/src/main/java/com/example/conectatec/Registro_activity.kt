@@ -30,7 +30,7 @@ class Registro_activity : AppCompatActivity() {
         val email: String = "",
         val phone: String = "",
         val username: String = "",
-        var password: String = ""
+        val password: String = ""
     )
 
     // Declare UI elements
@@ -104,10 +104,15 @@ class Registro_activity : AppCompatActivity() {
         }
 
         // Validate username
-        if (usuario.text.toString().trim().isEmpty()) {
+        val username = usuario.text.toString().trim()
+
+        if (username.isEmpty()) {
             usuario.error = "Por favor, ingrese un nombre de usuario"
             isValid = false
-        } else if (usuario.text.toString().trim().length < 4) {
+        } else if (username.contains(" ")) {
+            usuario.error = "El usuario no puede contener espacios"
+            isValid = false
+        } else if (username.length < 4) {
             usuario.error = "El usuario debe tener al menos 4 caracteres"
             isValid = false
         }
