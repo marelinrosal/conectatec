@@ -21,6 +21,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+//Clase para el objeto Usuario, con los campos que se van a registrar,
+// necesarios para la serialización y conexión con la base de datos
 @Serializable
 data class Usuario(
     val usuario_id: String,
