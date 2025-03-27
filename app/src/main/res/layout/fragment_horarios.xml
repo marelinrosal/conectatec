@@ -86,7 +86,7 @@
 
                 <TableRow>
                     <TextView
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -95,7 +95,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -104,7 +104,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -115,13 +115,11 @@
 
                 <TableRow>
                     <TextView
-                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Zinacantepec-Toluca" />
 
                     <TextView
-                        android:textSize="18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="06:00hrs" />
@@ -191,7 +189,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="Regreso: Santa Fe → Zinacantepec"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TableLayout
@@ -232,19 +230,16 @@
 
                 <TableRow>
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Santa Fe-Lerma" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="06:00hrs" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="22:00hrs" />
@@ -318,7 +313,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="Ida: Zinacantepec → Santa Fe"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TableLayout
@@ -330,6 +325,7 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -338,6 +334,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -346,6 +343,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -430,7 +428,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="Regreso: Santa Fe → Zinacantepec"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TableLayout
@@ -442,6 +440,7 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -450,6 +449,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -458,6 +458,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -551,7 +552,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="Ida: Zinacantepec → Santa Fe"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TableLayout
@@ -563,6 +564,7 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -571,6 +573,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -579,6 +582,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -663,7 +667,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="Regreso: Santa Fe → Zinacantepec"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TableLayout
@@ -675,6 +679,7 @@
 
                 <TableRow>
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -683,6 +688,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
@@ -691,6 +697,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
