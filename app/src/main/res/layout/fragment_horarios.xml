@@ -38,11 +38,11 @@
 
             <Button
                 android:id="@+id/lunes_viernes"
-                android:layout_width="wrap_content"
+                android:layout_width="116dp"
                 android:layout_height="wrap_content"
-                android:text="Lunes a viernes"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/verde"
-                android:layout_marginEnd="8dp"/>
+                android:text="Lunes a viernes" />
 
             <Button
                 android:id="@+id/btn_sabado"

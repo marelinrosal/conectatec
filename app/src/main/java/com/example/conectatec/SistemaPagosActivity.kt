@@ -181,7 +181,7 @@ class SistemaPagosActivity : AppCompatActivity() {
         finish()
     }
 
-    
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

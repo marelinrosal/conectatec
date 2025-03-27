@@ -20,8 +20,8 @@
 
     <LinearLayout
         android:id="@+id/panelEstacion"
-        android:layout_width="370dp"
-        android:layout_height="390dp"
+        android:layout_width="346dp"
+        android:layout_height="363dp"
         android:background="@drawable/custom_edit_text"
         android:backgroundTint="#FFFFFF"
         android:orientation="vertical"
@@ -38,15 +38,18 @@
             android:gravity="center"
             android:text="¡Elige una estación!"
             android:textColor="@color/orange"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/rayita"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
+            android:layout_width="350dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
             android:background="@color/orange"
-            android:orientation="vertical"></LinearLayout>
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"></LinearLayout>
 
         <RadioGroup
             android:id="@+id/Grupo"
