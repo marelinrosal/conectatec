@@ -41,7 +41,8 @@
                 android:layout_width="116dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/verde"
+                android:background="@color/orange"
+                android:backgroundTint="@color/orange"
                 android:text="Lunes a viernes" />
 
             <Button
@@ -49,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sábado"
-                android:backgroundTint="@color/verde"
+                android:backgroundTint="@color/orange"
                 android:layout_marginEnd="8dp"/>
 
             <Button
@@ -57,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Domingo"
-                android:backgroundTint="@color/verde"/>
+                android:backgroundTint="@color/orange"/>
         </LinearLayout>
 
         <!-- Lunes a Viernes -->
