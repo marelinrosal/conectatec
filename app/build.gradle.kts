@@ -5,7 +5,7 @@ plugins {
     // se agrega el plugin de serialization
     kotlin("plugin.serialization") version "2.1.0"
 
-
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
+    implementation(libs.androidx.ui.graphics.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -79,5 +80,14 @@ dependencies {
     implementation(libs.stripe.android)
     implementation(libs.okhttp)
 
+    //Firebase para notificaciones
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    // TODO: Add the dependencies for Firebase products you want to use
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-messaging")
+    // Add the dependencies for any other desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
 
 }
