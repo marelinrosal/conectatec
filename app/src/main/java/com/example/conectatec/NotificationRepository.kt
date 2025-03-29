@@ -9,6 +9,7 @@ object NotificationRepository {
     }
 
     fun addAllNotifications(notifications: List<Notification>) {
-
+        _notifications.clear()
+        _notifications.addAll(notifications)
     }
 }
