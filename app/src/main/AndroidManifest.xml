@@ -50,5 +50,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA8TLxJLbbzt6h8zZnhUkF0Gp8TVwA6WYM" />
 
+        <!-- Si quieres recibir notificaciones cuando la app está cerrada -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notificacion" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/orange" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="notificaciones_channel" />
+
     </application>
 </manifest>

@@ -14,6 +14,7 @@ androidx-navigation = "2.8.9"
 playServicesMaps = "19.1.0"
 okhttp = "4.9.3"
 uiGraphicsAndroid = "1.7.8"
+firebaseCrashlyticsBuildtools = "3.0.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,7 @@ play-services-maps = { group = "com.google.android.gms", name = "play-services-m
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 stripe-android = { module = "com.stripe:stripe-android", version = "21.6.0" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

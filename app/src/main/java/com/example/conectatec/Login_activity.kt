@@ -1,6 +1,12 @@
 package com.example.conectatec
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -15,9 +21,15 @@ import io.github.jan.supabase.postgrest.Postgrest
 import kotlinx.coroutines.launch
 import io.github.jan.supabase.postgrest.postgrest // ✅ Importación correcta
 import android.util.Log // ✅ Importar esto
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import com.google.firebase.FirebaseApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.google.firebase.messaging.FirebaseMessaging
+
 
 class Login_activity : AppCompatActivity() {
 
@@ -66,6 +78,11 @@ class Login_activity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        FirebaseApp.initializeApp(this)
+
+        getFCMToken()
+
     }
 
     // ✅ Función para obtener datos de Supabase con manejo de errores
@@ -96,4 +113,33 @@ class Login_activity : AppCompatActivity() {
             install(Postgrest)
         }
     }
+
+    //Obtener el token para firebase
+    private fun getFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM_TOKEN", "Error al obtener el token FCM", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // Obtener el token FCM
+            val token = task.result
+
+            // Mostrar en Logcat
+            Log.d("FCM_TOKEN", "Token FCM: $token")
+
+            // Mostrar en un Toast para poder copiarlo fácilmente
+            //Toast.makeText(this, "Token FCM: $token", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestNotificationPermission() {
+        if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 100)
+        }
+    }
+
+
 }
