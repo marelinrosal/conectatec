@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:background="@drawable/alas"
     android:padding="16dp">
 
+    <!-- 1. Área del Historial (ScrollView) -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="#40FFFFFF" > <!-- Se cierra con </ScrollView> abajo -->
+
+        <TextView
+            android:id="@+id/transactions_list_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:text="Cargando historial de boletos..."
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <!-- TextView se cierra implícitamente por ScrollView -->
+    </ScrollView> <!-- Cierre correcto de ScrollView -->
+
+    <!-- 2. Área de Generación de QR (ImageView) -->
     <ImageView
         android:id="@+id/imagenQR"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="Código QR generado" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Código QR generado"
+        tools:srcCompat="@android:color/darker_gray"/> <!-- Correctamente auto-cerrado con /> -->
 
+    <!-- 3. Botón Generador -->
     <Button
         android:id="@+id/generadorQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange"
-        android:text="Generar QR" />
+        android:text="Generar QR Último Boleto" /> <!-- *** CORREGIDO: Auto-cerrado con /> *** -->
+    <!-- El comentario debe ir después del cierre de la etiqueta si no está dentro -->
+    <!-- android:layout_marginBottom="16dp" -->
 
-
-
-</LinearLayout>
-
+</LinearLayout> <!-- Cierre correcto de LinearLayout raíz -->
