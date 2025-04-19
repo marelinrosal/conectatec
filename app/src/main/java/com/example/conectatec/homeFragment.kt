@@ -1,11 +1,14 @@
 package com.example.conectatec
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,194 +18,178 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-
+// import com.example.conectatec.util.Constants // <-- LÍNEA ANTERIOR COMENTADA/ELIMINADA
+import com.example.conectatec.Constants // <-- CAMBIO AQUÍ: Importar desde el paquete raíz
 
 class homeFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var handler: Handler
-    private var currentPage = 1 // Inicia en 1 (segunda imagen: la "real" primera)
+    private lateinit var sharedPreferences: SharedPreferences
+    private var currentPage = 1
 
     private val imagenesOriginales = listOf(
-        R.drawable.aviso4,
-        R.drawable.aviso5,
-        R.drawable.aviso1,
-        R.drawable.aviso2,
-        R.drawable.aviso6,
-        R.drawable.aviso7,
+        R.drawable.aviso4, R.drawable.aviso5, R.drawable.aviso1,
+        R.drawable.aviso2, R.drawable.aviso6, R.drawable.aviso7,
     )
-
     private val imagenesCarrusel: List<Int>
-        get() = listOf(imagenesOriginales.last()) + imagenesOriginales + listOf(imagenesOriginales.first())
+        get() = if (imagenesOriginales.isNotEmpty()) {
+            listOf(imagenesOriginales.last()) + imagenesOriginales + listOf(imagenesOriginales.first())
+        } else {
+            emptyList()
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View? {
+        sharedPreferences = requireActivity().getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE) // Usa constante importada
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val lblCerrar = view.findViewById<TextView>(R.id.lblcerrar)
 
+        val loggedInUserId = getLoggedInUserId()
+        if (loggedInUserId != null) {
+            Log.d("SessionData", "Usuario logueado con ID: $loggedInUserId")
+            Toast.makeText(requireContext(), "ID Usuario: $loggedInUserId", Toast.LENGTH_SHORT).show()
+        } else {
+            Log.w("SessionData", "ID de usuario no encontrado. Cerrando sesión.")
+            logout()
+            return
+        }
+
+        val lblCerrar = view.findViewById<TextView>(R.id.lblcerrar)
         lblCerrar.setOnClickListener {
-            val intent = Intent(requireContext(), Login_activity::class.java) // 🔹 Cambia "NuevaActivity" por tu Activity destino
+            logout()
+        }
+
+        viewPager = view.findViewById(R.id.imagenesSlide)
+        if (imagenesCarrusel.isNotEmpty()) {
+            viewPager.adapter = ViewPagerAdapter(imagenesCarrusel)
+            viewPager.setCurrentItem(currentPage, false)
+            handler = Handler(Looper.getMainLooper())
+            startAutoSlide()
+            viewPager.registerOnPageChangeCallback(viewPagerCallback)
+        } else {
+            Log.w("HomeFragment", "Lista de imágenes para carrusel vacía.")
+            viewPager.visibility = View.GONE
+        }
+
+        val btnPagos: Button = view.findViewById(R.id.BotonCompra)
+        btnPagos.setOnClickListener {
+            val intent = Intent(requireContext(), SistemaPagosActivity::class.java)
             startActivity(intent)
         }
-        viewPager = view.findViewById(R.id.imagenesSlide)
-        viewPager.adapter = ViewPagerAdapter(imagenesCarrusel)
-        viewPager.setCurrentItem(currentPage, false)
 
-        handler = Handler(Looper.getMainLooper())
-        startAutoSlide()
+        val grupo: RadioGroup = view.findViewById(R.id.grupoBotones)
+        grupo.setOnCheckedChangeListener { rg, checkedId ->
+            Handler(Looper.getMainLooper()).postDelayed({ rg.clearCheck() }, 200)
+            when (checkedId) {
+                R.id.Facebook -> openUrl("https://www.facebook.com/trenelinsurgente", "Facebook")
+                R.id.X -> openUrl("https://x.com/TrenInsurgente", "X")
+                R.id.tikTok -> openUrl("https://www.tiktok.com/@trenelinsurgente", "TikTok")
+                R.id.instagram -> openUrl("https://www.instagram.com/trenelinsurgente/", "Instagram")
+                R.id.youtube -> openUrl("https://www.youtube.com/@trenelinsurgente", "YouTube")
+            }
+        }
+    }
 
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                currentPage = position
+    private val viewPagerCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+            if (::handler.isInitialized) {
                 restartAutoSlide()
             }
+        }
 
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-                if (state == ViewPager2.SCROLL_STATE_IDLE) {
-                    if (currentPage == 0) {
-                        currentPage = imagenesOriginales.size
+        override fun onPageScrollStateChanged(state: Int) {
+            super.onPageScrollStateChanged(state)
+            if (state == ViewPager2.SCROLL_STATE_IDLE && imagenesCarrusel.isNotEmpty()) {
+                val lastRealPage = imagenesCarrusel.size - 2
+                val firstRealPage = 1
+                when (viewPager.currentItem) {
+                    0 -> {
+                        currentPage = lastRealPage
                         viewPager.setCurrentItem(currentPage, false)
-                    } else if (currentPage == imagenesCarrusel.size - 1) {
-                        currentPage = 1
+                    }
+                    imagenesCarrusel.size - 1 -> {
+                        currentPage = firstRealPage
                         viewPager.setCurrentItem(currentPage, false)
+                    }
+                    else -> {
+                        currentPage = viewPager.currentItem
                     }
                 }
             }
-        })
-        val btnPagos: Button =view.findViewById(R.id.BotonCompra)
-        btnPagos.setOnClickListener {
-            // Validar credenciales aquí (si es necesario)
-
-            // Redirigir a la pantalla principal
-            val intent = Intent(requireContext(), SistemaPagosActivity::class.java)
-            // Limpia la pila de actividades y crea una nueva tarea
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            requireActivity().finish() // Opcional, pero ayuda a asegurar el cierre
         }
-        val grupo: RadioGroup = view.findViewById(R.id.grupoBotones)
+    }
 
+    private fun getLoggedInUserId(): String? {
+        return sharedPreferences.getString(Constants.KEY_USER_ID, null) // Usa constante importada
+    }
 
-        // Manejar los cambios de selección
-        grupo.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.Facebook -> openFacebook()
-                R.id.X -> openX()
-                R.id.tikTok ->openTikTok()
-                R.id.instagram -> openInstagram()
-                R.id.youtube ->openYoutube()
-            }
+    private fun logout() {
+        if (::handler.isInitialized) {
+            handler.removeCallbacksAndMessages(null)
         }
+
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(Constants.KEY_IS_LOGGED_IN, false) // Usa constante importada
+        editor.remove(Constants.KEY_USER_ID)               // Usa constante importada
+        editor.apply()
+
+        Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(requireContext(), Login_activity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun startAutoSlide() {
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                currentPage++
-                viewPager.setCurrentItem(currentPage, true)
-                handler.postDelayed(this, 3000)
-            }
-        }, 3000)
+        if (!::handler.isInitialized || imagenesCarrusel.isEmpty()) return
+        handler.postDelayed(slideRunnable, 3000)
     }
 
     private fun restartAutoSlide() {
-        handler.removeCallbacksAndMessages(null)
-        startAutoSlide()
+        if (::handler.isInitialized) {
+            handler.removeCallbacks(slideRunnable)
+            handler.postDelayed(slideRunnable, 3000)
+        }
+    }
+
+    private val slideRunnable = object : Runnable {
+        override fun run() {
+            if (view == null || viewPager.adapter == null || viewPager.adapter?.itemCount == 0) {
+                handler.removeCallbacks(this)
+                return
+            }
+            currentPage++
+            viewPager.setCurrentItem(currentPage, true)
+            if (view != null) { // Reprogramar solo si la vista existe
+                handler.postDelayed(this, 3000)
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        handler.removeCallbacksAndMessages(null)
-    }
-
-    private fun openInstagram() {
-        // URL de Instagram o cualquier otra URL válida
-        val instagramUrl = "https://www.instagram.com/trenelinsurgente/"
-
-        // Crea el Intent con la acción VIEW
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(instagramUrl)
-
-        try {
-            // Lanza el navegador
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            // Si no hay navegador instalado, muestra un mensaje
-            Toast.makeText(requireContext(), "No se pudo abrir un navegador", Toast.LENGTH_SHORT)
-                .show()
+        if (::handler.isInitialized) {
+            handler.removeCallbacksAndMessages(null)
+            // Solo desregistrar si el adapter no es nulo (evita crash si no se inicializó)
+            if (viewPager.adapter != null) {
+                viewPager.unregisterOnPageChangeCallback(viewPagerCallback)
+            }
         }
     }
 
-    private fun openFacebook() {
-        // URL de Instagram o cualquier otra URL válida
-        val instagramUrl = "https://www.facebook.com/trenelinsurgente"
-
-        // Crea el Intent con la acción VIEW
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(instagramUrl)
-
+    private fun openUrl(url: String, appName: String) {
         try {
-            // Lanza el navegador
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            // Si no hay navegador instalado, muestra un mensaje
-            Toast.makeText(requireContext(), "No se pudo abrir un navegador", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-
-    private fun openX() {
-        // URL de Instagram o cualquier otra URL válida
-        val instagramUrl = "https://x.com/TrenInsurgente"
-
-        // Crea el Intent con la acción VIEW
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(instagramUrl)
-
-        try {
-            // Lanza el navegador
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            // Si no hay navegador instalado, muestra un mensaje
-            Toast.makeText(requireContext(), "No se pudo abrir un navegador", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-    private fun openTikTok() {
-        // URL de Instagram o cualquier otra URL válida
-        val instagramUrl = "https://www.tiktok.com/@trenelinsurgente"
-
-        // Crea el Intent con la acción VIEW
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(instagramUrl)
-
-        try {
-            // Lanza el navegador
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            // Si no hay navegador instalado, muestra un mensaje
-            Toast.makeText(requireContext(), "No se pudo abrir un navegador", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-    private fun openYoutube() {
-        // URL de Instagram o cualquier otra URL válida
-        val instagramUrl = "https://www.youtube.com/@trenelinsurgente"
-
-        // Crea el Intent con la acción VIEW
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(instagramUrl)
-
-        try {
-            // Lanza el navegador
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            // Si no hay navegador instalado, muestra un mensaje
-            Toast.makeText(requireContext(), "No se pudo abrir un navegador", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(requireContext(), "No se pudo abrir $appName.", Toast.LENGTH_LONG).show()
+            Log.e("OpenUrlError", "Error al abrir $url: ${e.message}")
         }
     }
 }
