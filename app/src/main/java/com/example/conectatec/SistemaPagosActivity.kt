@@ -28,6 +28,7 @@ import kotlinx.serialization.Serializable // Importar Serializable
 import android.view.ViewGroup //
 
 
+
 // --- Data class para la información del ticket ---
 data class TicketInfo(
     val url: String,
