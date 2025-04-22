@@ -19,7 +19,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 // import com.example.conectatec.util.Constants // <-- LÍNEA ANTERIOR COMENTADA/ELIMINADA
-import com.example.conectatec.Constants // <-- CAMBIO AQUÍ: Importar desde el paquete raíz
 
 class homeFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
@@ -41,7 +40,7 @@ class homeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        sharedPreferences = requireActivity().getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE) // Usa constante importada
+        sharedPreferences = requireActivity().getSharedPreferences(Constantes.PREFS_NAME, Context.MODE_PRIVATE) // Usa constante importada
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -125,7 +124,7 @@ class homeFragment : Fragment() {
     }
 
     private fun getLoggedInUserId(): String? {
-        return sharedPreferences.getString(Constants.KEY_USER_ID, null) // Usa constante importada
+        return sharedPreferences.getString(Constantes.KEY_USER_ID, null) // Usa constante importada
     }
 
     private fun logout() {
@@ -134,8 +133,8 @@ class homeFragment : Fragment() {
         }
 
         val editor = sharedPreferences.edit()
-        editor.putBoolean(Constants.KEY_IS_LOGGED_IN, false) // Usa constante importada
-        editor.remove(Constants.KEY_USER_ID)               // Usa constante importada
+        editor.putBoolean(Constantes.KEY_IS_LOGGED_IN, false) // Usa constante importada
+        editor.remove(Constantes.KEY_USER_ID)               // Usa constante importada
         editor.apply()
 
         Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()

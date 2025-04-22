@@ -19,7 +19,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 // import com.example.conectatec.util.Constants // <-- LÍNEA ANTERIOR COMENTADA/ELIMINADA
-import com.example.conectatec.Constants // <-- CAMBIO AQUÍ: Importar desde el paquete raíz
+import com.example.conectatec.Constantes // <-- CAMBIO AQUÍ: Importar desde el paquete raíz
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import io.github.jan.supabase.SupabaseClient
@@ -43,7 +43,7 @@ class Login_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedPreferences = getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE) // Usa constante importada
+        sharedPreferences = getSharedPreferences(Constantes.PREFS_NAME, Context.MODE_PRIVATE) // Usa constante importada
         if (isUserLoggedIn()) {
             goToInicioActivity()
             return
@@ -120,13 +120,13 @@ class Login_activity : AppCompatActivity() {
 
     private fun saveLoginState(userId: String) {
         val editor = sharedPreferences.edit()
-        editor.putBoolean(Constants.KEY_IS_LOGGED_IN, true) // Usa constante importada
-        editor.putString(Constants.KEY_USER_ID, userId)     // Usa constante importada
+        editor.putBoolean(Constantes.KEY_IS_LOGGED_IN, true) // Usa constante importada
+        editor.putString(Constantes.KEY_USER_ID, userId)     // Usa constante importada
         editor.apply()
     }
 
     private fun isUserLoggedIn(): Boolean {
-        return sharedPreferences.getBoolean(Constants.KEY_IS_LOGGED_IN, false) // Usa constante importada
+        return sharedPreferences.getBoolean(Constantes.KEY_IS_LOGGED_IN, false) // Usa constante importada
     }
 
     private fun goToInicioActivity() {

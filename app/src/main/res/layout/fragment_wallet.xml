@@ -9,44 +9,127 @@
     android:background="@drawable/alas"
     android:padding="16dp">
 
-    <!-- 1. Área del Historial (ScrollView) -->
-    <ScrollView
-        android:id="@+id/scrollView"
+    <!-- Logo -->
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="#40FFFFFF" > <!-- Se cierra con </ScrollView> abajo -->
+        android:layout_height="20dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/logotrenhome" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <!-- Código y Tipo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/transactions_list_textview"
-            android:layout_width="match_parent"
+            android:id="@+id/lblCodigo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textColor="@android:color/black"
-            android:text="Cargando historial de boletos..."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-        <!-- TextView se cierra implícitamente por ScrollView -->
-    </ScrollView> <!-- Cierre correcto de ScrollView -->
+            android:layout_weight="1"
+            android:text="Código: "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <!-- 2. Área de Generación de QR (ImageView) -->
-    <ImageView
-        android:id="@+id/imagenQR"
+        <TextView
+            android:id="@+id/lblTipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tipo: "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Contenedor para el ImageView del QR y el mensaje -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <RelativeLayout
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Código QR generado"
-        tools:srcCompat="@android:color/darker_gray"/> <!-- Correctamente auto-cerrado con /> -->
+        android:layout_marginBottom="16dp">
 
-    <!-- 3. Botón Generador -->
-    <Button
-        android:id="@+id/generadorQR"
-        android:layout_width="wrap_content"
+        <!-- ImageView para el código QR -->
+        <ImageView
+            android:id="@+id/imagenQR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#01AAAAAA"
+            android:contentDescription="Código QR generado" />
+
+        <!-- TextView para el mensaje "No se ha comprado boleto" -->
+        <TextView
+            android:id="@+id/noBoletoMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No se ha comprado boleto"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- Duración y Fecha de Compra -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lblDuracion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Duración: "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblFechaCompra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fecha De Compra: "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Botón para ver historial -->
+    <Space
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/orange"
-        android:text="Generar QR Último Boleto" /> <!-- *** CORREGIDO: Auto-cerrado con /> *** -->
-    <!-- El comentario debe ir después del cierre de la etiqueta si no está dentro -->
-    <!-- android:layout_marginBottom="16dp" -->
+        android:minHeight="20dp" />
 
-</LinearLayout> <!-- Cierre correcto de LinearLayout raíz -->
+    <TextView
+        android:id="@+id/btnHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="¡VER HISTORIAL!"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

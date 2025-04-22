@@ -4,7 +4,7 @@ package com.example.conectatec // <-- CAMBIO AQUÍ: Sin el .util
  * Objeto para almacenar constantes globales de la aplicación,
  * como las claves de SharedPreferences.
  */
-object Constants {
+object Constantes {
     // Nombre del archivo de SharedPreferences para la sesión
     const val PREFS_NAME = "AppSessionPrefs"
 
