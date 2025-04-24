@@ -7,4 +7,5 @@
     <color name="verde">#235B4E</color>
     <color name="dorado">#DDC9A3</color>
     <color name="gris">#98989A</color>
+    <color name="colorPrimary">#FFFFFFFF</color>
 </resources>

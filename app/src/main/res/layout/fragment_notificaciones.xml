@@ -6,6 +6,10 @@
     android:background="@drawable/alas"
     android:orientation="vertical">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"

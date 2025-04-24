@@ -1,5 +1,6 @@
 package com.example.conectatec
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -41,6 +42,7 @@ class walletFragment : Fragment() {
     private lateinit var lblDuracion: TextView
     private lateinit var lblFechaCompra: TextView
     private lateinit var noBoletoMessage: TextView
+    private lateinit var btnPagos: Button
     private var qrGenerado: Boolean = false
 
     //Declaracion de ejecutables.
@@ -74,6 +76,10 @@ class walletFragment : Fragment() {
         lblDuracion = view.findViewById(R.id.lblDuracion)
         lblFechaCompra = view.findViewById(R.id.lblFechaCompra)
         noBoletoMessage = view.findViewById(R.id.noBoletoMessage)
+        btnPagos = view.findViewById(R.id.BotonCompra)
+
+        // Ocultar el botón inicialmente hasta que se determine si hay boletos
+        btnPagos.visibility = View.GONE
 
         sharedPreferences = requireActivity().getSharedPreferences(Constantes.PREFS_NAME, Context.MODE_PRIVATE)
         supabaseClient = getClient()
@@ -87,6 +93,11 @@ class walletFragment : Fragment() {
             return
         }
 
+        btnPagos.setOnClickListener {
+            val intent = Intent(requireContext(), SistemaPagosActivity::class.java)
+            startActivity(intent)
+        }
+
         btnVerHistorial.setOnClickListener {
             sideSheetTransaccion(currentUserId!!)
         }
@@ -96,6 +107,12 @@ class walletFragment : Fragment() {
                 mostrarDialogoEscaneado()
             }
         }
+
+        // Este bloque ya no es necesario porque lo manejaremos en validacionTransaccionQR
+        /*if (!qrGenerado) {
+            val intent = Intent(requireContext(), SistemaPagosActivity::class.java)
+            startActivity(intent)
+        }*/
 
         validacionTransaccionQR(currentUserId!!)
     }
@@ -111,7 +128,6 @@ class walletFragment : Fragment() {
         btnCerrar.setOnClickListener {
             sideSheetDialog.dismiss()
         }
-
 
         //Accede a la base de datos para extraer los datos.
         lifecycleScope.launch {
@@ -172,7 +188,6 @@ class walletFragment : Fragment() {
                         if (ultimaTransaccion != null && !TicketUtils.transaccionExpirada(ultimaTransaccion)) {
                             val isValidForQr = if (ultimaTransaccion.duracion_qr == "viaje") {
                                 val scanCount = contadorScaner(ultimaTransaccion.codigo_qr)
-
                                 scanCount < 2
                             } else {
                                 true
@@ -190,6 +205,7 @@ class walletFragment : Fragment() {
                                 } ?: "Fecha De Compra: N/A"
 
                                 noBoletoMessage.visibility = View.GONE
+                                btnPagos.visibility = View.GONE // Ocultar el botón si hay un boleto vigente
 
                                 val qrData = "userId=${ultimaTransaccion.usuario_id ?: userId}," +
                                         "tipo=${ultimaTransaccion.tipo_qr}," +
@@ -206,12 +222,13 @@ class walletFragment : Fragment() {
                                     ocultarQR(true)
                                 }
                             } else {
-                                 Toast.makeText(context, "No hay boletos vigentes para mostrar un QR.", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, "No hay boletos vigentes para mostrar un QR.", Toast.LENGTH_LONG).show()
                                 ocultarQR(false)
                             }
                         } else {
-                           Toast.makeText(context, "No hay boletos vigentes para mostrar un QR.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "No hay boletos vigentes para mostrar un QR.", Toast.LENGTH_LONG).show()
                             ocultarQR(false)
+                            btnPagos.visibility = View.VISIBLE // Mostrar el botón si no hay boletos
                         }
                     }
                 }
@@ -220,6 +237,7 @@ class walletFragment : Fragment() {
                     if (isAdded) {
                         Toast.makeText(context, "Error al verificar boletos vigentes: ${e.message}", Toast.LENGTH_LONG).show()
                         ocultarQR(false)
+                        btnPagos.visibility = View.VISIBLE // Mostrar el botón si hay un error
                     }
                 }
             }
@@ -324,6 +342,7 @@ class walletFragment : Fragment() {
             qrGenerado = false
             handler.removeCallbacks(ocultarQrRunnable)
             noBoletoMessage.visibility = View.VISIBLE
+            btnPagos.visibility = View.VISIBLE // Mostrar el botón cuando se oculta el QR
             lblCodigo.text = ""
             lblTipo.text = ""
             lblDuracion.text = ""

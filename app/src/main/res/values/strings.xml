@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">conectatec</string>
+    <string name="app_name">ConectaTec</string>
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
 </resources>

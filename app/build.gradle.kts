@@ -56,7 +56,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.zxing)
-
+    implementation(libs.androidx.drawerlayout)
     // se agrega la dependencia de instalación de la libreria cliente kotlin para supabase
     implementation(platform("io.github.jan-tennert.supabase:bom:3.1.3"))
     implementation("io.github.jan-tennert.supabase:postgrest-kt")

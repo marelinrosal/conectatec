@@ -1,5 +1,4 @@
 package com.example.conectatec
-
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap

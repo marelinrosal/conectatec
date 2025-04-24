@@ -1,135 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@drawable/alas"
-    android:padding="16dp">
+    android:fillViewport="true">
 
-    <!-- Logo -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/logotrenhome" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
-
-    <!-- Código y Tipo -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/alas"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/lblCodigo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Código: "
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <!-- Logo -->
 
-        <TextView
-            android:id="@+id/lblTipo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tipo: "
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- Contenedor para el ImageView del QR y el mensaje -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <RelativeLayout
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="16dp">
-
-        <!-- ImageView para el código QR -->
         <ImageView
-            android:id="@+id/imagenQR"
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="#01AAAAAA"
-            android:contentDescription="Código QR generado" />
-
-        <!-- TextView para el mensaje "No se ha comprado boleto" -->
-        <TextView
-            android:id="@+id/noBoletoMessage"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="No se ha comprado boleto"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
-    </RelativeLayout>
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:padding="30dp"
+            android:paddingTop="200dp"
+            app:srcCompat="@mipmap/logotrenhome" />
 
-    <!-- Duración y Fecha de Compra -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        <!-- Código y Tipo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:minHeight="50dp"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/lblCodigo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Código: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblTipo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tipo: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Contenedor para el ImageView del QR y el mensaje -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- ImageView para el código QR -->
+            <ImageView
+                android:id="@+id/imagenQR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="#01AAAAAA"
+                android:contentDescription="Código QR generado" />
+
+            <!-- TextView para el mensaje "No se ha comprado boleto" -->
+            <TextView
+                android:id="@+id/noBoletoMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="No se ha comprado boleto"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <!-- Duración y Fecha de Compra -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblDuracion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Duración: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblFechaCompra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fecha De Compra: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/BotonCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:paddingBottom="6dp"
+                android:text="¡Compra ya tu boleto!"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Botón para ver historial -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp" />
 
         <TextView
-            android:id="@+id/lblDuracion"
-            android:layout_width="0dp"
+            android:id="@+id/btnHistorial"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Duración: "
-            android:textColor="#000000"
-            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="¡VER HISTORIAL!"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/lblFechaCompra"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Fecha De Compra: "
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
     </LinearLayout>
-
-    <!-- Botón para ver historial -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="20dp" />
-
-    <TextView
-        android:id="@+id/btnHistorial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="¡VER HISTORIAL!"
-        android:textColor="@color/orange"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-</LinearLayout>
+</ScrollView>
