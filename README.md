@@ -30,5 +30,9 @@
 - [@Marelin](https://github.com/marelinrosal)   
 - [@Hiram](https://github.com/HiramReyes1)
 - [@Star](https://github.com/Star0110)  
-- [@Jorge](https://github.com/ocjorge) 
+- [@Jorge](https://github.com/ocjorge)
+
+
+  ⚖️ Licencia
+Este proyecto está licenciado bajo la Licencia MIT 
 
