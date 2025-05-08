@@ -7,6 +7,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import android.util.Log
@@ -20,49 +21,41 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.d(TAG, "From: ${remoteMessage.from}")
-
-        // Registro detallado para depuración
         Log.d(TAG, "Message data: ${remoteMessage.data}")
         Log.d(TAG, "Message notification: ${remoteMessage.notification}")
 
-        // Procesar mensaje de notificación (enviado desde la consola de Firebase)
-        remoteMessage.notification?.let { notification ->
-            Log.d(TAG, "Notification Message Body: ${notification.body}")
+        // Crear un objeto de notificación para nuestro repositorio local
+        var mensaje: String? = null
+        var tipo: String? = "info"
+        var fecha: String = "Ahora"
 
-            // Crear objeto Notification con los datos de la notificación
-            val notificationObj = Notification(
-                tipo = "info", // Tipo predeterminado para notificaciones de consola
-                mensaje = notification.body,
-                fecha = "Ahora"
-            )
-
-            // Guardar en repositorio
-            NotificationRepository.addNotification(notificationObj)
-
-            // Mostrar notificación o actualizar UI
-            if (isAppInForeground()) {
-                sendBroadcast(Intent("NEW_NOTIFICATION"))
-            } else {
-                showSystemNotification(notificationObj)
-            }
-        }
-
-        // Procesar mensaje de datos (para mensajes personalizados)
+        // Procesar datos (prioridad mayor para mensajes de datos personalizados)
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Message data payload: ${remoteMessage.data}")
+            tipo = remoteMessage.data["tipo"] ?: tipo
+            mensaje = remoteMessage.data["mensaje"]
+            fecha = remoteMessage.data["fecha"] ?: fecha
+        }
 
-            val tipo = remoteMessage.data["tipo"]
-            val mensaje = remoteMessage.data["mensaje"]
-            val fecha = remoteMessage.data["fecha"] ?: "Ahora"
+        // Si no hay mensaje en datos, usar el mensaje de notificación como respaldo
+        if (mensaje == null && remoteMessage.notification != null) {
+            mensaje = remoteMessage.notification!!.body
+        }
 
+        // Si tenemos un mensaje para mostrar, procesarlo
+        if (mensaje != null) {
             val notification = Notification(tipo, mensaje, fecha)
+
+            // Guardar en repositorio
             NotificationRepository.addNotification(notification)
+
+            // Siempre mostrar notificación del sistema (en segundo plano)
+            // pero en primer plano también actualizar UI
+            showSystemNotification(notification)
 
             if (isAppInForeground()) {
                 // Actualizar UI si la app está en primer plano
                 sendBroadcast(Intent("NEW_NOTIFICATION"))
-            } else {
-                showSystemNotification(notification)
             }
         }
     }
@@ -71,9 +64,18 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onNewToken(token)
         Log.d(TAG, "Token refreshed: $token")
 
-        // También puedes guardarlo en SharedPreferences para uso futuro
+        // Guardarlo en SharedPreferences para uso futuro
         val sharedPrefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         sharedPrefs.edit().putString("fcm_token", token).apply()
+
+        // Aquí deberías enviar el token a tu servidor para actualización
+        sendRegistrationToServer(token)
+    }
+
+    private fun sendRegistrationToServer(token: String) {
+        // Implementa la lógica para enviar el token a tu servidor
+        Log.d(TAG, "Sending token to server: $token")
+        // TODO: Implementar API call para enviar token al servidor
     }
 
     private fun isAppInForeground(): Boolean {
@@ -101,12 +103,16 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         )
 
         val channelId = "notificaciones_channel"
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_notificacion)
-            .setContentTitle("Nueva notificación")
+            .setContentTitle(getTitleByType(notification.tipo))
             .setContentText(notification.mensaje ?: "Tienes una nueva notificación")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
+            .setSound(defaultSoundUri)
+            .setVibrate(longArrayOf(0, 250, 250, 250))
             .setContentIntent(pendingIntent)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -129,5 +135,17 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.notify(notificationId, notificationBuilder.build())
 
         Log.d(TAG, "Notificación mostrada con ID: $notificationId")
+    }
+
+    private fun getTitleByType(tipo: String?): String {
+        return when (tipo?.lowercase()) {
+            "alerta" -> "⚠️ ALERTA"
+            "retraso" -> "⏱️ RETRASO"
+            "info" -> "INFORMACIÓN"
+            "estacion" -> "ESTACIÓN"
+            "afluencia" -> "AFLUENCIA"
+            "horario" -> "HORARIO"
+            else -> "CONECTATEC"
+        }
     }
 }

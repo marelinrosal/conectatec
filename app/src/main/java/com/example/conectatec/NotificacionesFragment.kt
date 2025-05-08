@@ -21,7 +21,6 @@ class NotificacionesFragment : Fragment() {
     private var notificationReceiver: BroadcastReceiver? = null
 
     override fun onCreateView(
-
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
