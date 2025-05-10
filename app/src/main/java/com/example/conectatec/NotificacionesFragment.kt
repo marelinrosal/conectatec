@@ -89,6 +89,7 @@ class NotificacionesFragment : Fragment() {
 
             // Agregar algunas notificaciones de ejemplo solo si no hay ninguna
             val sampleNotifications = listOf(
+
                 Notification("alerta", "⚠️ ALERTA: Tramo suspendido", "Hace 5 minutos"),
                 Notification("retraso", "⏱️ RETRASO: 15 minutos", "Hace 18 minutos")
             )
@@ -122,7 +123,7 @@ class NotificacionesFragment : Fragment() {
             "info", "estacion" -> R.drawable.ic_station
             "afluencia" -> R.drawable.ic_people
             "horario" -> R.drawable.ic_schedule
-            else -> R.drawable.ic_notificacion // Icono por defecto
+            else -> R.mipmap.ic_launcher_tren_round // Icono por defecto
         }
         iconView.setImageResource(iconRes)
 

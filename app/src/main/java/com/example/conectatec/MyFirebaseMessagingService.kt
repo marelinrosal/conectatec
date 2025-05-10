@@ -11,6 +11,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import android.util.Log
+import com.example.conectatec.R.color.orange
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random
@@ -106,7 +107,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_notificacion)
+            .setSmallIcon(R.mipmap.ic_launcher_tren_round)
+            .setColor(10428993)
             .setContentTitle(getTitleByType(notification.tipo))
             .setContentText(notification.mensaje ?: "Tienes una nueva notificación")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
