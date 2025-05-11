@@ -21,12 +21,28 @@ plugins {
     // aplicado en el archivo build.gradle.kts del módulo de la aplicación donde se usan los servicios de Google.
     id("com.google.gms.google-services") version "4.4.2" apply false
 
+    id("org.jetbrains.dokka") version "2.0.0"
+
     // Podrías tener otros plugins declarados aquí, por ejemplo:
     // - Para Kotlin Serialization si lo usas a nivel de proyecto (aunque más común a nivel de módulo).
     // - Para Hilt o Koin para inyección de dependencias.
     // - Para Safe Args para navegación.
     // - etc.
 }
+subprojects {
+    apply(plugin = "org.jetbrains.dokka")
+}
+// Configuración para la documentación AGREGADA de todos los módulos
+tasks.dokkaHtmlMultiModule {
+    outputDirectory.set(layout.buildDirectory.dir("docs/html"))// Carpeta de salida para la documentación global
+    moduleName.set("Documentación del Proyecto ConectaTec") // Nombre para la página principal de la documentación
+}
+
+// Si quisieras usar otro formato como GFM (GitHub Flavored Markdown):
+// tasks.dokkaGfmMultiModule {
+//     outputDirectory.set(rootProject.buildDir.resolve("docs/gfm"))
+// }
+
 
 // Generalmente, este archivo también puede contener un bloque 'buildscript' (en Groovy)
 // o su equivalente en Kotlin DSL para definir repositorios y dependencias

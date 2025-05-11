@@ -97,8 +97,6 @@
     </application>
 
     <!-- Permisos adicionales (algunos pueden estar duplicados de la sección superior, lo cual es inofensivo pero redundante) -->
-    <!-- Permite a la aplicación abrir sockets de red. (Duplicado) -->
-    <uses-permission android:name="android.permission.INTERNET" />
     <!-- Permite a la aplicación publicar notificaciones. Necesario para Android 13 (API 33) y superior. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <!-- Permite usar PowerManager WakeLocks para mantener el procesador activo o la pantalla encendida. -->

@@ -1,6 +1,9 @@
 // Archivo de configuración de build para el módulo de la aplicación (:app).
 // Define cómo se compila y empaqueta este módulo específico.
 
+// IMPORT PARA DOKKA - DEBE IR AL PRINCIPIO DEL ARCHIVO
+import org.jetbrains.dokka.gradle.DokkaTaskPartial
+
 // Bloque 'plugins': Aplica los plugins necesarios para este módulo.
 plugins {
     // Aplica el plugin de aplicación Android.
@@ -21,6 +24,7 @@ plugins {
     // Necesario para integrar servicios de Firebase en este módulo.
     // Este plugin lee el archivo google-services.json.
     id("com.google.gms.google-services")
+    // id("org.jetbrains.dokka") version "2.0.0" // <-- ESTA LÍNEA SE ELIMINA. El plugin Dokka se aplica y versiona desde el build.gradle.kts del proyecto raíz.
 }
 
 // Bloque 'android': Configuración específica para la compilación de Android.
@@ -172,4 +176,44 @@ dependencies {
     // Comentario original de Firebase:
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
+}
+
+// --- CONFIGURACIÓN DE DOKKA PARA ESTE MÓDULO 'app' ---
+tasks.withType<DokkaTaskPartial>().configureEach {
+    dokkaSourceSets.configureEach {
+        // Nombre que se mostrará para este conjunto de fuentes en la documentación
+        displayName.set("Módulo App ConectaTec") // Puedes cambiar este nombre como prefieras
+
+        // Rutas a tus archivos fuente Kotlin y Java para este módulo 'app'
+        // Asegúrate que estas rutas sean correctas para tu estructura de proyecto.
+        sourceRoots.from(file("src/main/java"), file("src/main/kotlin"))
+
+        // Incluir un archivo README específico del módulo si lo tienes y quieres que aparezca
+        // en la documentación de este módulo.
+        // val moduleReadme = project.file("README.md") // Asume README.md en la raíz del módulo 'app'
+        // if (moduleReadme.exists()) {
+        //     includes.from(moduleReadme)
+        // }
+
+        // Plataforma de destino (para Android, siempre JVM)
+        platform.set(org.jetbrains.dokka.Platform.jvm)
+
+        // Si quieres que Dokka te avise de elementos públicos sin KDoc (comentarios de documentación)
+        reportUndocumented.set(false) // Cambia a 'true' si quieres ver estas advertencias
+
+        // Suprimir funciones obvias (getters/setters generados, etc.) de la documentación
+        suppressObviousFunctions.set(true)
+
+        // Opcional: Configuración para enlazar a tu código fuente en un repositorio (ej. GitHub)
+        // sourceLink {
+        //     // Directorio local base de las fuentes para este módulo.
+        //     localDirectory.set(project.file("src/main")) // o "src/main/kotlin", "src/main/java"
+        //     // URL remota a la raíz de este módulo en tu repositorio.
+        //     // Debes reemplazar TU_USUARIO y TU_PROYECTO con los tuyos.
+        //     // project.name aquí será "app".
+        //     remoteUrl.set(java.net.URI("https://github.com/TU_USUARIO/TU_PROYECTO/tree/main/${project.name}/src/main"))
+        //     // Sufijo para el número de línea en GitHub/GitLab.
+        //     remoteLineSuffix.set("#L")
+        // }
+    }
 }
