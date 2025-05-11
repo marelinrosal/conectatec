@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  AndroidManifest.xml
+  Archivo principal de configuración de la aplicación Android.
+  Define los componentes de la aplicación, permisos requeridos, y otras configuraciones esenciales.
+
+  Autores:
+  - Ortiz Gallegos Starenka Susana
+  - Salgado Rojas Marelin Iral
+  - Orozco Reyes Hiram
+  - Ortiz Ceballos Jorge
+
+  Versión de la app (según metadatos del proyecto): 1.15
+  Fecha de referencia (según metadatos del proyecto): 22 Marzo 2025
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permisos de la aplicación -->
+    <!-- Permite a la aplicación abrir sockets de red. Necesario para acceso a internet. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permite a la aplicación acceder a la ubicación precisa del dispositivo. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Permite a la aplicación acceder a la ubicación aproximada del dispositivo. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -17,53 +35,75 @@
         android:theme="@style/Theme.Conectatec"
         tools:targetApi="31">
 
-        <!-- Servicio de Firebase Messaging -->
+        <!-- Definición del Servicio para Firebase Cloud Messaging (FCM) -->
+        <!-- Este servicio maneja la recepción de mensajes push de Firebase. -->
         <service
             android:name=".MyFirebaseMessagingService"
-            android:exported="false">
+            android:exported="false"> <!-- exported="false" significa que solo componentes de esta app pueden iniciarlo -->
             <intent-filter>
+                <!-- Escucha eventos de mensajería de Firebase -->
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <!-- Actividades -->
+        <!-- Definición de las Actividades de la aplicación -->
+        <!-- Actividad para el sistema de pagos. -->
         <activity
             android:name=".SistemaPagosActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- No es exportada, solo se accede desde la app -->
+
+        <!-- Actividad de inicio de sesión. Es la actividad principal y de lanzamiento. -->
         <activity
             android:name=".Login_activity"
-            android:exported="true">
+            android:exported="true"> <!-- Exportada para ser el punto de entrada -->
             <intent-filter>
+                <!-- Define esta actividad como la entrada principal de la aplicación. -->
                 <action android:name="android.intent.action.MAIN" />
+                <!-- Indica que esta actividad debe aparecer en el lanzador de aplicaciones. -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Actividad para el registro de nuevos usuarios. -->
         <activity
             android:name=".Registro_activity"
             android:exported="false" />
+
+        <!-- Actividad principal o de inicio después del login. -->
         <activity
             android:name=".InicioActivity"
             android:exported="false" />
 
-        <!-- API Key de Google Maps -->
+        <!-- Metadatos de la aplicación -->
+        <!-- API Key para los servicios de Google Maps. Reemplazar con tu propia API Key. -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA8TLxJLbbzt6h8zZnhUkF0Gp8TVwA6WYM" />
+            android:value="AIzaSyA8TLxJLbbzt6h8zZnhUkF0Gp8TVwA6WYM" /> <!-- ¡CUIDADO! Las API Keys no deberían estar hardcodeadas así en producción si el código es público. Considera usar variables de entorno o Gradle properties. -->
 
-        <!-- Si quieres recibir notificaciones cuando la app está cerrada -->
+        <!-- Configuración para las notificaciones de Firebase Messaging cuando la app está en segundo plano o cerrada -->
+        <!-- Icono por defecto para las notificaciones. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher_tren_round" />
+        <!-- Color por defecto para las notificaciones. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/orange" />
+        <!-- ID del canal de notificación por defecto para Android Oreo (API 26) y superior. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="notificaciones_channel" />
 
     </application>
+
+    <!-- Permisos adicionales (algunos pueden estar duplicados de la sección superior, lo cual es inofensivo pero redundante) -->
+    <!-- Permite a la aplicación abrir sockets de red. (Duplicado) -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permite a la aplicación publicar notificaciones. Necesario para Android 13 (API 33) y superior. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Permite usar PowerManager WakeLocks para mantener el procesador activo o la pantalla encendida. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Permite a la aplicación recibir la acción BOOT_COMPLETED que se transmite después de que el sistema termina de arrancar. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
 </manifest>
