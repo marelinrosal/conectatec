@@ -59,6 +59,18 @@ class HorariosFragment : Fragment() {
         // Infla el layout para este fragmento
         return inflater.inflate(R.layout.fragment_horarios, container, false)
     }
+    /**
+     * Se llama inmediatamente después de que [onCreateView] ha retornado.
+     * <p>
+     * Inicializa los componentes de la UI ([LinearLayout] y [Button]),
+     * establece el estado inicial mostrando los horarios de Lunes a Viernes por defecto,
+     * y configura los `OnClickListener` para los botones que controlan la visibilidad
+     * de las diferentes tablas de horarios.
+     * </p>
+     *
+     * @param view La [View] devuelta por [onCreateView].
+     * @param savedInstanceState Estado previamente guardado, si existe.
+     */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
