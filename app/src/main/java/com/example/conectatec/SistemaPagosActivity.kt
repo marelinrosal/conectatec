@@ -82,7 +82,7 @@ class SistemaPagosActivity : AppCompatActivity() {
     private var pollerRunnable: Runnable? = null // Tarea que se ejecuta periódicamente
     private var pollCount = 0 // Contador de cuántas veces se ha ejecutado el poller
     private val MAX_POLLS = 300  // Límite de ejecuciones del poller (10 minutos / 2 segs por poll)
-    private val POLL_INTERVAL = 2000L // Intervalo entre chequeos del poller (2 segundos)
+    private val POLL_INTERVAL = 3000L // Intervalo entre chequeos del poller (3 segundos)
 
     /**
      * Se llama cuando la actividad es creada.
@@ -116,8 +116,13 @@ class SistemaPagosActivity : AppCompatActivity() {
         // Mapa que relaciona los IDs de los RadioButton con la información del TicketInfo correspondiente
         val ticketInfoMap = mapOf(
             R.id.diaUrbano to TicketInfo("https://buy.stripe.com/test_fZe3gj2qceQi7DibIJ", "urbano", "dia", 30.0, currentDate),
-            // ... (resto de tus tickets)
-            R.id.viajeInterurbano to TicketInfo("https://buy.stripe.com/test_5kAg35d4Q0ZsbTy9AH", "interurbano", "viaje", 60.0, currentDate)
+            R.id.semanaUrbano to TicketInfo("https://buy.stripe.com/test_00g9EHfcYdMe6ze4gj", "urbano", "semana", 150.0, currentDate),
+            R.id.mesUrbano to TicketInfo("https://buy.stripe.com/test_aEU7wzc0M37AaPuaEJ", "urbano", "mes", 600.0, currentDate),
+            R.id.viajeUrbano to TicketInfo("https://buy.stripe.com/test_5kAg35d4Q0ZsbTy9AH", "urbano", "viaje", 15.0, currentDate),
+            R.id.diaInterurbano to TicketInfo("https://buy.stripe.com/test_9AQeZ11m86jM5vacMO", "interurbano", "dia", 120.0, currentDate),
+            R.id.semanaInterurbano to TicketInfo("https://buy.stripe.com/test_bIYg358OAeQif5KdQU", "interurbano", "semana", 540.0, currentDate),
+            R.id.mesInterurbano to TicketInfo("https://buy.stripe.com/test_28o18b5CoaA2bTyeV0", "interurbano", "mes", 2040.0, currentDate),
+            R.id.viajeInterurbano to TicketInfo("https://buy.stripe.com/test_28o7wzaWIeQi1eU5ks", "interurbano", "viaje", 60.0, currentDate)
         )
 
         // Listener para el grupo de RadioButtons de tickets interurbanos

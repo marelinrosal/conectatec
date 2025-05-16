@@ -69,17 +69,17 @@ object TicketUtils {
      * (ej: 1 día = 24 * 60 * 60 * 1000 ms).
      * </p>
      * <ul>
-     *   <li>"viaje": 60,000 ms (1 minuto para pruebas, usualmente sería más, ej. 2 horas = 7,200,000 ms)</li>
-     *   <li>"dia": 90,000 ms (1.5 minutos para pruebas, usualmente sería 1 día)</li>
-     *   <li>"semana": 120,000 ms (2 minutos para pruebas, usualmente sería 7 días)</li>
-     *   <li>"mes": 150,000 ms (2.5 minutos para pruebas, usualmente sería ~30 días)</li>
+     *   <li>"viaje": 120,000 ms (2 minuto para pruebas, usualmente sería más, ej. 2 horas = 7,200,000 ms)</li>
+     *   <li>"dia": 150,000 ms (2.5 minutos para pruebas, usualmente sería 1 día)</li>
+     *   <li>"semana": 180,000 ms (3 minutos para pruebas, usualmente sería 7 días)</li>
+     *   <li>"mes": 210,000 ms (3.5 minutos para pruebas, usualmente sería ~30 días)</li>
      * </ul>
      */
     val duracionBoleto = mapOf(
-        "viaje" to 60_000L,  // 1 minuto (para pruebas) -> En producción: ej. 2 horas = 2 * 60 * 60 * 1000 = 7_200_000L
-        "dia" to 90_000L,   // 1.5 minutos (para pruebas) -> En producción: 1 día = 24 * 60 * 60 * 1000 = 86_400_000L
-        "semana" to 120_000L, // 2 minutos (para pruebas) -> En producción: 7 días = 7 * 86_400_000L
-        "mes" to 150_000L     // 2.5 minutos (para pruebas) -> En producción: ej. 30 días = 30 * 86_400_000L
+        "viaje" to 120_000L,  // 2 minuto (para pruebas) -> En producción: ej. 2 horas = 2 * 60 * 60 * 1000 = 7_200_000L
+        "dia" to 150_000L,   // 2.5 minutos (para pruebas) -> En producción: 1 día = 24 * 60 * 60 * 1000 = 86_400_000L
+        "semana" to 180_000L, // 3 minutos (para pruebas) -> En producción: 7 días = 7 * 86_400_000L
+        "mes" to 210_000L     // 3.5 minutos (para pruebas) -> En producción: ej. 30 días = 30 * 86_400_000L
     )
 
     /**
