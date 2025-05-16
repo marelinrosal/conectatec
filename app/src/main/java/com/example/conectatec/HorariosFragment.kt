@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import com.google.android.material.button.MaterialButton
 
 /**
  * Fragmento encargado de mostrar los horarios de servicio, permitiendo al usuario
@@ -37,9 +38,9 @@ class HorariosFragment : Fragment() {
     private lateinit var lunesViernesLayout: LinearLayout
     private lateinit var sabadoLayout: LinearLayout
     private lateinit var domingoLayout: LinearLayout
-    private lateinit var buttonLunesViernes: Button
-    private lateinit var buttonSabado: Button
-    private lateinit var buttonDomingo: Button
+    private lateinit var buttonLunesViernes: MaterialButton
+    private lateinit var buttonSabado: MaterialButton
+    private lateinit var buttonDomingo: MaterialButton
 
     /**
      * Se llama para que el fragmento instancie su vista de interfaz de usuario.
@@ -59,18 +60,6 @@ class HorariosFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_horarios, container, false)
     }
 
-    /**
-     * Se llama inmediatamente después de que [onCreateView] ha retornado.
-     * <p>
-     * Inicializa los componentes de la UI ([LinearLayout] y [Button]),
-     * establece el estado inicial mostrando los horarios de Lunes a Viernes por defecto,
-     * y configura los `OnClickListener` para los botones que controlan la visibilidad
-     * de las diferentes tablas de horarios.
-     * </p>
-     *
-     * @param view La [View] devuelta por [onCreateView].
-     * @param savedInstanceState Estado previamente guardado, si existe.
-     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -157,18 +146,19 @@ class HorariosFragment : Fragment() {
      * @see R.color.white
      */
     private fun updateButtonStates(selectedButton: Button) {
-        // Restablece la apariencia de todos los botones a su estado por defecto (no seleccionado)
-        buttonLunesViernes.setBackgroundResource(android.R.drawable.btn_default)
-        buttonSabado.setBackgroundResource(android.R.drawable.btn_default)
-        buttonDomingo.setBackgroundResource(android.R.drawable.btn_default)
+
+        //Color de seleccion de botones
+        val colorTextoSeleccionado = resources.getColor(R.color.white, requireContext().theme)
+        val colorTextoNoSeleccionado = resources.getColor(R.color.black, requireContext().theme)
 
         // Restablece el color del texto de todos los botones
-        buttonLunesViernes.setTextColor(resources.getColor(android.R.color.black, null)) // API 23+
-        buttonSabado.setTextColor(resources.getColor(android.R.color.black, null))     // API 23+
-        buttonDomingo.setTextColor(resources.getColor(android.R.color.black, null))    // API 23+
+        buttonLunesViernes.setTextColor(colorTextoNoSeleccionado)
+        buttonSabado.setTextColor(colorTextoNoSeleccionado)
+        buttonDomingo.setTextColor(colorTextoNoSeleccionado)
 
-        // Resalta el botón seleccionado
-        selectedButton.setBackgroundResource(R.color.orange) // Asume que R.color.orange está definido
-        selectedButton.setTextColor(resources.getColor(R.color.white, null)) // Asume que R.color.white está definido y API 23+
+
+        //  Resalta el botón seleccionado
+        selectedButton.setTextColor(colorTextoSeleccionado)
+
     }
 }

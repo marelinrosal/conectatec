@@ -38,27 +38,32 @@
 
             <Button
                 android:id="@+id/lunes_viernes"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
+                android:layout_width="112dp"
+                android:layout_height="60dp"
                 android:layout_marginEnd="8dp"
-                android:background="@color/orange"
-                android:backgroundTint="@color/orange"
+                android:gravity="center"
                 android:text="Lunes a viernes" />
 
             <Button
                 android:id="@+id/btn_sabado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sábado"
+                style="@style/BotonApp"
+                android:layout_width="112dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_edit_text"
                 android:backgroundTint="@color/orange"
-                android:layout_marginEnd="8dp"/>
+                android:gravity="center"
+                android:text="Sábado" />
 
             <Button
                 android:id="@+id/btn_domingo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Domingo"
-                android:backgroundTint="@color/orange"/>
+                style="@style/BotonApp"
+                android:layout_width="112dp"
+                android:layout_height="55dp"
+                android:background="@drawable/custom_edit_text"
+                android:backgroundTint="@color/orange"
+                android:gravity="center"
+                android:text="Domingo" />
         </LinearLayout>
 
         <!-- Lunes a Viernes -->
@@ -66,7 +71,8 @@
             android:id="@+id/layout_lunes_viernes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <!-- Ida: Zinacantepec → Santa Fe -->
             <TextView
@@ -86,100 +92,117 @@
                 android:stretchColumns="*">
 
                 <TableRow>
+
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Línea y dirección"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Primera salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Última salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zinacantepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:00hrs" />
+                        android:text="Zinacantepec-Toluca"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:00hrs" />
+                        android:text="06:00hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:00hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:15hrs" />
+                        android:text="Toluca-Metepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:15hrs" />
+                        android:text="06:15hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:30hrs" />
+                        android:text="Metepec-Lerma"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:30hrs" />
+                        android:text="06:30hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:30hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Santa Fe" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:45hrs" />
+                        android:text="Lerma-Santa Fe"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:45hrs" />
+                        android:text="06:45hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:45hrs"
+                        android:textSize="13sp" />
                 </TableRow>
             </TableLayout>
 
@@ -201,100 +224,118 @@
                 android:stretchColumns="*">
 
                 <TableRow>
+
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Línea y dirección"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Primera salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Última salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Santa Fe-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:00hrs" />
+                        android:text="Santa Fe-Lerma"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:00hrs" />
+                        android:text="06:00hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:00hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:15hrs" />
+                        android:text="Lerma-Metepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:15hrs" />
+                        android:text="06:15hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:30hrs" />
+                        android:text="Metepec-Toluca"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:30hrs" />
+                        android:text="06:30hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:30hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Zinacantepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:45hrs" />
+                        android:text="Toluca-Zinacantepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:45hrs" />
+                        android:text="06:45hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:45hrs"
+                        android:textSize="13sp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
@@ -325,100 +366,117 @@
                 android:stretchColumns="*">
 
                 <TableRow>
+
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Línea y dirección"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Primera salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Última salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zinacantepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:30hrs" />
+                        android:text="Zinacantepec-Toluca"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:30hrs" />
+                        android:text="06:30hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:45hrs" />
+                        android:text="Toluca-Metepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:45hrs" />
+                        android:text="06:45hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:45hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:00hrs" />
+                        android:text="Metepec-Lerma"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:00hrs" />
+                        android:text="07:00hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:00hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Santa Fe" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:15hrs" />
+                        android:text="Lerma-Santa Fe"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:15hrs" />
+                        android:text="07:15hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs"
+                        android:textSize="13sp" />
                 </TableRow>
             </TableLayout>
 
@@ -440,100 +498,117 @@
                 android:stretchColumns="*">
 
                 <TableRow>
+
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Línea y dirección"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Primera salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Última salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Santa Fe-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:30hrs" />
+                        android:text="Santa Fe-Lerma"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:30hrs" />
+                        android:text="06:30hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:45hrs" />
+                        android:text="Lerma-Metepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:45hrs" />
+                        android:text="06:45hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:45hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:00hrs" />
+                        android:text="Metepec-Toluca"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:00hrs" />
+                        android:text="07:00hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:00hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Zinacantepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:15hrs" />
+                        android:text="Toluca-Zinacantepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:15hrs" />
+                        android:text="07:15hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:15hrs"
+                        android:textSize="13sp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
@@ -564,100 +639,118 @@
                 android:stretchColumns="*">
 
                 <TableRow>
+
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Línea y dirección"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Primera salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Última salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zinacantepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:00hrs" />
+                        android:text="Zinacantepec-Toluca"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:00hrs" />
+                        android:text="07:00hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:00hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:15hrs" />
+                        android:text="Toluca-Metepec"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:15hrs"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:15hrs" />
+                        android:text="21:15hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:30hrs" />
+                        android:text="Metepec-Lerma"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:30hrs" />
+                        android:text="07:30hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Santa Fe" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:45hrs" />
+                        android:text="Lerma-Santa Fe"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:45hrs" />
+                        android:text="07:45hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:45hrs"
+                        android:textSize="13sp" />
                 </TableRow>
             </TableLayout>
 
@@ -676,103 +769,121 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:stretchColumns="*">
+                android:stretchColumns="*"
+                android:visibility="visible">
 
                 <TableRow>
+
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Línea y dirección"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Primera salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/orange"
                         android:text="Última salida"
                         android:textColor="@color/white"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Santa Fe-Lerma" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:00hrs" />
+                        android:text="Santa Fe-Lerma"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:00hrs" />
+                        android:text="07:00hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:00hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lerma-Metepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:15hrs" />
+                        android:text="Lerma-Metepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:15hrs" />
+                        android:text="07:15hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:15hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Metepec-Toluca" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:30hrs" />
+                        android:text="Metepec-Toluca"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:30hrs" />
+                        android:text="07:30hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30hrs"
+                        android:textSize="13sp" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toluca-Zinacantepec" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:45hrs" />
+                        android:text="Toluca-Zinacantepec"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="21:45hrs" />
+                        android:text="07:45hrs"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:45hrs"
+                        android:textSize="13sp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
