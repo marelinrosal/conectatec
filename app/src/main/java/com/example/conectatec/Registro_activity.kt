@@ -182,8 +182,8 @@ class Registro_activity : AppCompatActivity() {
         if (telefonoStr.isEmpty()) {
             telefono.error = "Por favor, ingrese su número de teléfono"
             isValid = false
-        } else if (telefonoStr.length < 9) { // Longitud mínima de 9 dígitos, ajustar según necesidad
-            telefono.error = "El número debe tener al menos 9 dígitos"
+        } else if (telefonoStr.length != 10) { // Longitud mínima de 9 dígitos, ajustar según necesidad
+            telefono.error = "El número debe tener exactamente 10 dígitos"
             isValid = false
         } else if (!telefonoStr.matches("\\d+".toRegex())) { // Solo dígitos
             telefono.error = "Ingrese solo números"
