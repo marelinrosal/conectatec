@@ -307,8 +307,9 @@ class walletFragment : Fragment() {
                                 noBoletoMessage.visibility = View.GONE // Oculta mensaje de "sin boleto".
                                 btnPagos.visibility = View.GONE       // Oculta botón de compra.
 
-                                // Prepara los datos para el QR.
-                                val qrData = "userId=${ultimaTransaccion.usuario_id ?: userId}," +
+
+                                // Prepara los datos para el QR con la URL de la web
+                                val qrData = "https://v0-qr-code-android-studio.vercel.app/?userId=${ultimaTransaccion.usuario_id ?: userId}," +
                                         "tipo=${ultimaTransaccion.tipo_qr}," +
                                         "duracion=${ultimaTransaccion.duracion_qr}," +
                                         "codigo=${ultimaTransaccion.codigo_qr}"
