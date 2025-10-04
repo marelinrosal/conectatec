@@ -533,8 +533,8 @@ class walletFragment : Fragment() {
     private fun getClient(): SupabaseClient {
         // ¡¡¡MALA PRÁCTICA DE SEGURIDAD!!! NO INCRUSTAR CLAVES DE API EN EL CÓDIGO FUENTE.
         return createSupabaseClient(
-            supabaseUrl = "https://pxtwcujdospzspdcmlzx.supabase.co",
-            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4dHdjdWpkb3NwenNwZGNtbHp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2MTUyMTIsImV4cCI6MjA1ODE5MTIxMn0.ADmBU41kcmoi1JaCettGUGeyUAlK_fvyx9Dj8xF7INc",
+            supabaseUrl = "https://uqltgfifxwliboccsxko.supabase.co",
+            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxbHRnZmlmeHdsaWJvY2NzeGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0MzAyODAsImV4cCI6MjA3NTAwNjI4MH0.EuLdr9RVIMRFLXR6VhxGqoskET6EUcb_B9zsPqe-bO0",
         ) {
             install(Postgrest)
         }

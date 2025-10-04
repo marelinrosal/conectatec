@@ -275,8 +275,8 @@ class Login_activity : AppCompatActivity() {
         // Estas claves pueden ser extraídas si el APK es descompilado.
         // Considerar usar Gradle properties, variables de entorno o un backend proxy.
         return createSupabaseClient(
-            supabaseUrl = "https://pxtwcujdospzspdcmlzx.supabase.co", // URL de tu proyecto Supabase
-            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4dHdjdWpkb3NwenNwZGNtbHp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2MTUyMTIsImV4cCI6MjA1ODE5MTIxMn0.ADmBU41kcmoi1JaCettGUGeyUAlK_fvyx9Dj8xF7INc", // Clave anónima pública de Supabase
+            supabaseUrl =  "https://uqltgfifxwliboccsxko.supabase.co", // URL de tu proyecto Supabase
+            supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxbHRnZmlmeHdsaWJvY2NzeGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0MzAyODAsImV4cCI6MjA3NTAwNjI4MH0.EuLdr9RVIMRFLXR6VhxGqoskET6EUcb_B9zsPqe-bO0", // Clave anónima pública de Supabase
         ) {
             install(Postgrest) // Instala el plugin Postgrest para interactuar con la base de datos.
         }
