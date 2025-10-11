@@ -19,7 +19,7 @@ plugins {
     // 'version "4.4.2"' especifica la versión del plugin de Google Services a utilizar.
     // 'apply false' indica que este plugin tampoco se aplica a nivel de proyecto, sino que debe ser
     // aplicado en el archivo build.gradle.kts del módulo de la aplicación donde se usan los servicios de Google.
-    id("com.google.gms.google-services") version "4.4.2" apply false
+    id("com.google.gms.google-services") version "4.4.3" apply false
 
     id("org.jetbrains.dokka") version "2.0.0"
 

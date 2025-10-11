@@ -167,7 +167,7 @@ dependencies {
 
     // Dependencias para Firebase (notificaciones y analytics).
     // Bill of Materials (BOM) para Firebase: gestiona las versiones de las librerías de Firebase.
-    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
     // Al usar la BOM, no es necesario especificar versiones para las dependencias individuales de Firebase.
     implementation("com.google.firebase:firebase-analytics") // Para Firebase Analytics.
     implementation("com.google.firebase:firebase-messaging") // Para Firebase Cloud Messaging (FCM).

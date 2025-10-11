@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "991438223897",
-    "project_id": "conectatec-3ef1c",
-    "storage_bucket": "conectatec-3ef1c.firebasestorage.app"
+    "project_number": "497372748451",
+    "project_id": "admin-conectatec",
+    "storage_bucket": "admin-conectatec.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:991438223897:android:3e5602d453469ee7bf4888",
+        "mobilesdk_app_id": "1:497372748451:android:8b6a4ba8dde370a5f1bd16",
         "android_client_info": {
           "package_name": "com.example.conectatec"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA72pIB-6KqHeGFFwwMJiSGYARevCPVHic"
+          "current_key": "AIzaSyBGiKQ1UeZTO62qzQy8afTvqrGFpsYDgNY"
         }
       ],
       "services": {
