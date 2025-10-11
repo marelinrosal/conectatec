@@ -13,6 +13,7 @@ import androidx.core.app.NotificationCompat
 import android.util.Log
 // import com.example.conectatec.R.color.orange // No se usa directamente, pero el color se define en showSystemNotification
 import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random
 
@@ -66,49 +67,60 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @see isAppInForeground
      */
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        Log.d(TAG, "From: ${remoteMessage.from}") // Origen del mensaje
-        Log.d(TAG, "Message data payload: ${remoteMessage.data}") // Payload de datos
-        Log.d(TAG, "Message notification payload: ${remoteMessage.notification}") // Payload de notificación
+        Log.d(TAG, "From: ${remoteMessage.from}")
+        Log.d(TAG, "Message data payload: ${remoteMessage.data}")
+        Log.d(TAG, "Message notification payload: ${remoteMessage.notification}")
 
-        // Variables para construir nuestro objeto Notification local
+        // Variables para construir el objeto Notification local
         var mensaje: String? = null
-        var tipo: String? = "info" // Tipo por defecto si no se especifica
-        var fecha: String = "Ahora" // Fecha por defecto si no se especifica
+        var titulo: String? = null
+        var tipo: String? = "info"
+        var fecha: String = "Ahora"
+        var estacionNombre: String? = null
+        var prioridad: String? = "baja"
 
-        // Prioriza el payload de datos si está presente.
+        // Procesar el payload de datos si está presente
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Processing data payload: ${remoteMessage.data}")
-            tipo = remoteMessage.data["tipo"] ?: tipo // Usa el tipo de los datos, o el por defecto
-            mensaje = remoteMessage.data["mensaje"] // El mensaje principal
-            fecha = remoteMessage.data["fecha"] ?: fecha // La fecha de los datos, o la por defecto
+            tipo = remoteMessage.data["tipo_msg"] ?: remoteMessage.data["tipo"] ?: tipo
+            estacionNombre = remoteMessage.data["estacion_nombre"]
+            prioridad = remoteMessage.data["prioridad"] ?: prioridad
+
+            // Intentar obtener la fecha formateada si viene en el payload
+            fecha = remoteMessage.data["fecha"] ?: fecha
         }
 
-        // Si no se encontró un mensaje en el payload de datos,
-        // intenta usar el cuerpo del payload de notificación como respaldo.
-        if (mensaje == null && remoteMessage.notification != null) {
+        // Obtener título y mensaje del payload de notificación
+        if (remoteMessage.notification != null) {
+            titulo = remoteMessage.notification!!.title
             mensaje = remoteMessage.notification!!.body
-            // Podrías también extraer el título del remoteMessage.notification!!.title si es necesario
         }
 
-        // Si después de procesar ambos payloads tenemos un mensaje, procedemos.
+        // Si tenemos un mensaje, procedemos
         if (mensaje != null) {
-            val notification = Notification(tipo, mensaje, fecha) // Crea el objeto Notification local
+            // Añadir el nombre de la estación al tipo si está disponible
+            val tipoConEstacion = if (estacionNombre != null) {
+                "$tipo - $estacionNombre"
+            } else {
+                tipo
+            }
 
-            // Guarda la notificación en el repositorio local para su visualización en la app.
+            val notification = Notification(tipoConEstacion, mensaje, fecha)
+
+            // Guardar la notificación en el repositorio local
             NotificationRepository.addNotification(notification)
             Log.d(TAG, "Notification added to repository: $notification")
 
-            // Muestra siempre una notificación del sistema al usuario.
-            showSystemNotification(notification)
+            // Mostrar la notificación del sistema con prioridad ajustada
+            showSystemNotification(notification, prioridad ?: "baja", titulo)
 
-            // Si la aplicación está actualmente en primer plano,
-            // envía un broadcast para que la UI pueda reaccionar (ej. actualizar una lista de notificaciones).
+            // Si la app está en primer plano, enviar broadcast
             if (isAppInForeground()) {
                 Log.d(TAG, "App is in foreground. Sending broadcast: NEW_NOTIFICATION")
-                sendBroadcast(Intent("NEW_NOTIFICATION")) // La actividad/fragmento debe registrar un BroadcastReceiver para esta acción.
+                sendBroadcast(Intent("NEW_NOTIFICATION"))
             }
         } else {
-            Log.w(TAG, "No message content found in FCM message to display.")
+            Log.w(TAG, "No message content found in FCM message")
         }
     }
 
@@ -180,65 +192,87 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @see InicioActivity
      * @see R.id.nav_notifications // Asumido para la navegación al fragmento de notificaciones
      */
-    private fun showSystemNotification(notification: Notification) {
-        // Intent para abrir InicioActivity y pasarle data para que abra el fragmento de notificaciones.
+    private fun showSystemNotification(notification: Notification, prioridad: String, titulo: String?) {
         val intent = Intent(this, InicioActivity::class.java).apply {
-            putExtra("openFragment", "notificaciones") // Extra para indicar a InicioActivity qué hacer.
-            // Flags para manejar la pila de actividades: si InicioActivity ya está abierta, la trae al frente.
+            putExtra("openFragment", "notificaciones")
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         }
 
-        // PendingIntent que se ejecutará cuando el usuario toque la notificación.
         val pendingIntent = PendingIntent.getActivity(
-            this,
-            0, // requestCode, puede ser único si necesitas manejar múltiples PendingIntents de forma diferente.
-            intent,
-            // FLAG_IMMUTABLE es requerido para apps que apuntan a Android S (API 31) o superior.
-            // FLAG_UPDATE_CURRENT asegura que los extras del intent se actualicen si el PendingIntent ya existía.
+            this, 0, intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val channelId = "notificaciones_channel" // ID del canal de notificación, debe coincidir con el usado en AndroidManifest.xml.
-        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION) // Sonido por defecto.
+        // Seleccionar el canal según la prioridad
+        val channelId = when(prioridad) {
+            "alta" -> "high_importance"
+            "media" -> "medium_importance"
+            else -> "default"
+        }
 
-        // Construye la notificación del sistema.
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+        // Ajustar la prioridad de la notificación
+        val notificationPriority = when(prioridad) {
+            "alta" -> NotificationCompat.PRIORITY_HIGH
+            "media" -> NotificationCompat.PRIORITY_DEFAULT
+            else -> NotificationCompat.PRIORITY_LOW
+        }
+
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher_tren_round) // Icono pequeño (obligatorio).
-            .setColor(resources.getColor(R.color.orange, theme)) // Color del icono y acentos (API 21+). Asegúrate que R.color.orange existe.
-            .setContentTitle(getTitleByType(notification.tipo)) // Título de la notificación.
-            .setContentText(notification.mensaje ?: "Tienes una nueva notificación") // Contenido del mensaje.
-            .setPriority(NotificationCompat.PRIORITY_HIGH) // Prioridad para notificaciones importantes.
-            .setAutoCancel(true) // La notificación se cierra al tocarla.
-            .setSound(defaultSoundUri) // Sonido de la notificación.
-            .setVibrate(longArrayOf(0, 250, 250, 250)) // Patrón de vibración: sin retraso, vibra 250ms, pausa 250ms, vibra 250ms.
-            .setContentIntent(pendingIntent) // Acción al tocar la notificación.
+            .setSmallIcon(R.mipmap.ic_launcher_tren_round)
+            .setColor(resources.getColor(R.color.orange, theme))
+            .setContentTitle(titulo ?: getTitleByType(notification.tipo))
+            .setContentText(notification.mensaje ?: "Tienes una nueva notificación")
+            .setPriority(notificationPriority)
+            .setAutoCancel(true)
+            .setSound(defaultSoundUri)
+            .setVibrate(if (prioridad == "alta") longArrayOf(0, 500, 250, 500) else longArrayOf(0, 250, 250, 250))
+            .setContentIntent(pendingIntent)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        // Para Android Oreo (API 26) y superior, es obligatorio crear un canal de notificación.
+        // Crear canales de notificación para Android Oreo+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                "Notificaciones Generales", // Nombre del canal visible para el usuario.
-                NotificationManager.IMPORTANCE_HIGH // Importancia del canal.
+            // Canal de alta prioridad
+            val highChannel = NotificationChannel(
+                "high_importance",
+                "Notificaciones Urgentes",
+                NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "Canal para todas las notificaciones de la aplicación ConectaTec." // Descripción del canal.
-                enableLights(true) // Habilita luces LED si el dispositivo las soporta.
-                // Luz LED color, puedes definirla si quieres un color específico
-                // lightColor = Color.RED
-                enableVibration(true) // Habilita vibración para este canal.
+                description = "Notificaciones urgentes y de alta prioridad"
+                enableLights(true)
+                enableVibration(true)
             }
-            notificationManager.createNotificationChannel(channel)
+
+            // Canal de prioridad media
+            val mediumChannel = NotificationChannel(
+                "medium_importance",
+                "Notificaciones Importantes",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Notificaciones de importancia media"
+                enableVibration(true)
+            }
+
+            // Canal por defecto
+            val defaultChannel = NotificationChannel(
+                "default",
+                "Notificaciones Generales",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = "Notificaciones generales de la aplicación"
+            }
+
+            notificationManager.createNotificationChannel(highChannel)
+            notificationManager.createNotificationChannel(mediumChannel)
+            notificationManager.createNotificationChannel(defaultChannel)
         }
 
-        // Genera un ID único para la notificación. Usar el hashCode del mensaje
-        // puede ayudar a agrupar o reemplazar notificaciones similares si es necesario,
-        // o Random.nextInt() para asegurar que cada una sea nueva.
-        // Considera una estrategia de ID más robusta si necesitas actualizar/cancelar notificaciones específicas.
         val notificationId = notification.mensaje?.hashCode() ?: Random.nextInt()
-        notificationManager.notify(notificationId, notificationBuilder.build()) // Muestra la notificación.
+        notificationManager.notify(notificationId, notificationBuilder.build())
 
-        Log.d(TAG, "System notification shown with ID: $notificationId and content: ${notification.mensaje}")
+        Log.d(TAG, "System notification shown with ID: $notificationId, priority: $prioridad")
     }
 
     /**
@@ -248,14 +282,17 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @return Un [String] con el título para la notificación.
      */
     private fun getTitleByType(tipo: String?): String {
-        return when (tipo?.lowercase()) { // Compara en minúsculas para ser más robusto.
+        return when (tipo?.lowercase()) {
+            "general" -> "📢 CONECTATEC"
+            "horario" -> "🕐 CAMBIO DE HORARIO"
+            "estacion" -> "🚉 ESTACIÓN"
+            "promocion" -> "🎫 PROMOCIÓN"
+            "mantenimiento" -> "🔧 MANTENIMIENTO"
+            "urgente" -> "🚨 URGENTE"
             "alerta" -> "⚠️ ALERTA"
             "retraso" -> "⏱️ RETRASO"
-            "info" -> "ℹ️ INFORMACIÓN" // Añadido emoji para consistencia
-            "estacion" -> "🚉 ESTACIÓN" // Añadido emoji
-            "afluencia" -> "📊 AFLUENCIA" // Añadido emoji
-            "horario" -> "🗓️ HORARIO" // Añadido emoji
-            else -> "CONECTATEC" // Título por defecto.
+            "info" -> "ℹ️ INFORMACIÓN"
+            else -> "CONECTATEC"
         }
     }
 }

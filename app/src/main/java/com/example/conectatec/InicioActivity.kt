@@ -162,7 +162,14 @@ class InicioActivity : AppCompatActivity() {
         // Obtiene el token de registro FCM actual y lo guarda en SharedPreferences.
         // Este token es necesario para que el dispositivo reciba notificaciones push.
         retrieveAndStoreFirebaseToken()
-
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "Suscrito exitosamente al tópico 'general'")
+                } else {
+                    Log.e("FCM", "Error al suscribirse al tópico", task.exception)
+                }
+            }
         // ===== FIN: CÓDIGO PARA MANEJO DE NOTIFICACIONES FCM =====
     }
 
