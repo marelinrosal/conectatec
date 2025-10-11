@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/alas"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarEditar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/stripe_ic_paymentsheet_back" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="156dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            app:srcCompat="@mipmap/usuario" />
+
+        <TextView
+            android:id="@+id/usuarioLbl"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Usuario"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtusuario"
+            android:layout_width="253dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableLeft="@drawable/baseline_person_outline_24"
+            android:drawablePadding="8dp"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Usuario"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/nombreLbl"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Nombre y apellidos"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/txtnomapellidos"
+            android:layout_width="252dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableLeft="@drawable/baseline_person_outline_24"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Nombre y Apellidos"
+            android:inputType="text|textPersonName"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/emailLbl"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Email"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtemail"
+            android:layout_width="253dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableLeft="@drawable/baseline_alternate_email_24"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Correo electronico"
+            android:inputType="text|textEmailAddress"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/telefonoLbl"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Telefono"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/txttelefono"
+            android:layout_width="255dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableLeft="@drawable/baseline_phone_24"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Telefono movil"
+            android:inputType="phone"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/passwordLbl"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Clave"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/txtclave"
+            android:layout_width="259dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawableEnd="@drawable/ojo"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background" />
+
+
+        <Button
+            android:id="@+id/btnregistrar"
+            android:layout_width="313dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/orange"
+            android:text="EDITAR"
+            android:textSize="18sp"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
+</ScrollView >

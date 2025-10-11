@@ -1,6 +1,7 @@
 package com.example.conectatec
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 // import android.os.Looper // No se usa directamente, Handler() sin Looper.getMainLooper() es válido si el contexto es UI
@@ -19,6 +20,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
+import kotlin.jvm.java
 
 /**
  * Actividad principal después de que el usuario ha iniciado sesión.
@@ -99,6 +101,7 @@ class InicioActivity : AppCompatActivity() {
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open, R.string.navigation_drawer_close // Strings para accesibilidad
         )
+        toggle.drawerArrowDrawable.color = Color.WHITE
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState() // Sincroniza el estado del indicador del drawer (icono de hamburguesa).
 
@@ -115,6 +118,12 @@ class InicioActivity : AppCompatActivity() {
                     logout() // Llama al método para cerrar sesión.
                     true // Indica que el evento ha sido manejado.
                 }
+                R.id.nav_editar->{
+                    val intent = Intent(this, Perfil_Activity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
                 else -> false // Para otros ítems, no se maneja aquí.
             }
         }

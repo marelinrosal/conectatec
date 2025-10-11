@@ -74,6 +74,10 @@
             android:name=".InicioActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".Perfil_Activity"
+            android:exported="false" />
+
         <!-- Metadatos de la aplicación -->
         <!-- API Key para los servicios de Google Maps. Reemplazar con tu propia API Key. -->
         <meta-data
