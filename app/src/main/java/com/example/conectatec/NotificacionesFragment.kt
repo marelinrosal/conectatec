@@ -176,7 +176,7 @@ class NotificacionesFragment : Fragment() {
             // (Opcional) Añadir notificaciones de ejemplo si el repositorio está vacío.
             // Esto es útil para desarrollo y demostración.
             // En producción, probablemente no querrías añadir datos de muestra aquí.
-            Log.d(TAG, "Añadiendo notificaciones de ejemplo al repositorio.")
+            /*Log.d(TAG, "Añadiendo notificaciones de ejemplo al repositorio.")
             val sampleNotifications = listOf(
                 Notification("alerta", "⚠️ ALERTA: Servicio en tramo Observatorio-Santa Fe suspendido temporalmente.", "Hace 5 minutos"),
                 Notification("retraso", "⏱️ RETRASO: Demora estimada de 15 minutos en la línea Zinacantepec-Lerma.", "Hace 18 minutos"),
@@ -185,6 +185,8 @@ class NotificacionesFragment : Fragment() {
             NotificationRepository.addAllNotifications(sampleNotifications) // Añade las muestras al repositorio.
             notificationsContainer.removeAllViews() // Limpia de nuevo para quitar el mensaje "No hay notificaciones".
             currentNotifications = NotificationRepository.notifications // Recarga las notificaciones que ahora incluyen las muestras.
+
+             */
         }
 
         // 3. Añadir cada notificación al contenedor.
