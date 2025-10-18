@@ -21,6 +21,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.jvm.java
+import android.os.Build
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import android.Manifest
 
 /**
  * Actividad principal después de que el usuario ha iniciado sesión.
@@ -58,6 +62,18 @@ class InicioActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: android.content.SharedPreferences
     private var handler: Handler? = null // Handler opcional, se limpia en logout
     private val TAG = "InicioActivity" // Tag para logging
+    // ===== NUEVO: Registrador para solicitar permiso de notificaciones =====
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            Log.d(TAG, "Permiso POST_NOTIFICATIONS otorgado por el usuario")
+            Toast.makeText(this, "Permiso para notificaciones otorgado", Toast.LENGTH_SHORT).show()
+        } else {
+            Log.d(TAG, "Permiso POST_NOTIFICATIONS denegado por el usuario")
+            Toast.makeText(this, "Permiso para notificaciones denegado", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     /**
      * Se llama cuando la actividad está iniciando.
@@ -158,7 +174,8 @@ class InicioActivity : AppCompatActivity() {
 
         // Verifica si la actividad fue iniciada o reanudada a través de una notificación.
         handleNotificationIntent(intent)
-
+        // ===== NUEVO: Solicitar permiso de notificaciones ANTES de obtener el token =====
+        requestNotificationPermission()
         // Obtiene el token de registro FCM actual y lo guarda en SharedPreferences.
         // Este token es necesario para que el dispositivo reciba notificaciones push.
         retrieveAndStoreFirebaseToken()
@@ -183,6 +200,24 @@ class InicioActivity : AppCompatActivity() {
      *
      * @param intent El nuevo [Intent] que inició la actividad.
      */
+    // ===== NUEVO: Método para solicitar permiso de notificaciones =====
+    private fun requestNotificationPermission() {
+        // Solo solicitar en Android 13 (API 33) o superior
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Verificar si el permiso ya fue concedido
+            if (ContextCompat.checkSelfPermission(
+                    this, Manifest.permission.POST_NOTIFICATIONS
+                ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                Log.d(TAG, "Solicitando permiso POST_NOTIFICATIONS...")
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                Log.d(TAG, "Permiso POST_NOTIFICATIONS ya fue otorgado anteriormente")
+            }
+        } else {
+            Log.d(TAG, "Android version menor a 13, no se requiere solicitar permiso en tiempo de ejecución")
+        }
+    }
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         // Actualiza el intent de la actividad con el nuevo intent recibido.
