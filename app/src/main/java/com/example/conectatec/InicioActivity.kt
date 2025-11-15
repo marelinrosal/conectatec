@@ -21,6 +21,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.jvm.java
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import android.os.Build
 
 /**
  * Actividad principal después de que el usuario ha iniciado sesión.
@@ -80,6 +85,39 @@ class InicioActivity : AppCompatActivity() {
      *                           recientemente suministró en [onSaveInstanceState].
      *                           De lo contrario es nulo.
      */
+
+    // Lanzador para pedir el permiso de notificaciones
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(this, "✅ Notificaciones activadas correctamente", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "⚠️ Las notificaciones están desactivadas", Toast.LENGTH_LONG).show()
+            }
+        }
+
+    // Método que pide el permiso de notificaciones
+    private fun askNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    Log.d("Permisos", "Permiso de notificaciones ya concedido")
+                }
+                shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
+                    Toast.makeText(this, "Activa las notificaciones para recibir alertas importantes", Toast.LENGTH_LONG).show()
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+                else -> {
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
@@ -170,6 +208,13 @@ class InicioActivity : AppCompatActivity() {
                     Log.e("FCM", "Error al suscribirse al tópico", task.exception)
                 }
             }
+        // ===== FIN: CÓDIGO PARA MANEJO DE NOTIFICACIONES FCM =====
+
+
+            askNotificationPermission()
+
+
+
         // ===== FIN: CÓDIGO PARA MANEJO DE NOTIFICACIONES FCM =====
     }
 
